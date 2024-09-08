@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31584850675b37c40817fdf72b29d42f, type: 3}
+  m_Name: WaveValues
+  m_EditorClassIdentifier: 
+  waves:
+  - lowerHeightTime: 5
+    upperHeightTime: 3
+    usefulItemsSpawnRate: 0
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0
+  - lowerHeightTime: 3
+    upperHeightTime: 3
+    usefulItemsSpawnRate: 0
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0
+  - lowerHeightTime: 4
+    upperHeightTime: 7
+    usefulItemsSpawnRate: 0
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0

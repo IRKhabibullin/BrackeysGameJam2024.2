@@ -1104,7 +1104,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2112657045}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -3.546, y: 0, z: 0}
 --- !u!64 &1942975219
 MeshCollider:
@@ -1209,13 +1209,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1942975218}
   - {fileID: 906646410}
   - {fileID: 202937279}
   - {fileID: 18780229}
   - {fileID: 367170004}
   - {fileID: 1227864213}
-  - {fileID: 2143530528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143530527
@@ -1246,12 +1244,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143530527}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2112657045}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2143530529
 MonoBehaviour:
@@ -1267,6 +1265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lowWaveHeight: -0.5
   highWaveHeight: 0.5
+  waveValues: {fileID: 11400000, guid: a99d13a096f6a244b8f2778317d16110, type: 2}
   ripplePeriod: 0
   rippleSpeed: 0.01
 --- !u!64 &2143530530
@@ -1417,6 +1416,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 330585546}
   - {fileID: 2112657045}
+  - {fileID: 1942975218}
+  - {fileID: 2143530528}
   - {fileID: 1773905565}
   - {fileID: 171754641}
   - {fileID: 1201219215}
