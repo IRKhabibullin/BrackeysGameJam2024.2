@@ -11,8 +11,9 @@ public class WaveValues_SO : ScriptableObject
 [Serializable]
 public class WaveData
 {
-    [Tooltip("Время до подъема")] public float lowerHeightTime;
-    [Tooltip("Время до спуска")] public float upperHeightTime;
+    [Tooltip("Время подъема")] public float highTideTime;
+    [Tooltip("Время спуска")] public float lowTideTime;
+    [Tooltip("Время до подъема волны")] public float highTideTimeout;
     [Tooltip("Количество полезных предметов")] public int usefulItemsSpawnRate;
     [Tooltip("Количество негативных предметов")] public int uselessItemsSpawnRate;
     [Tooltip("Количество препятствий")] public int obstaclesSpawnRate;

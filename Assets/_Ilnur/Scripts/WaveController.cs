@@ -23,23 +23,18 @@ public class WaveController : MonoBehaviour
     {
         foreach (var waveData in waveValues.waves)
         {
-            yield return MoveWaveCoroutine(lowWaveHeight);
-            yield return new WaitForSeconds(waveData.lowerHeightTime);
-            yield return MoveWaveCoroutine(highWaveHeight);
-            yield return new WaitForSeconds(waveData.upperHeightTime);
+            yield return MoveWaveCoroutine(lowWaveHeight, waveData.lowTideTime);
+            yield return new WaitForSeconds(waveData.highTideTimeout);
+            yield return MoveWaveCoroutine(highWaveHeight, waveData.highTideTime);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
-    private IEnumerator MoveWaveCoroutine(float newWaveHeight)
+    private IEnumerator MoveWaveCoroutine(float newWaveHeight, float waveMoveTime)
     {
         var currentPosition = transform.position;
-        var t = 0f;
-        while (!Mathf.Approximately(currentPosition.y, newWaveHeight))
-        {
-            currentPosition = new Vector3(0, Mathf.Lerp(currentPosition.y, newWaveHeight, t), 0);
-            transform.position = currentPosition;
-                
-            t += rippleSpeed * Time.deltaTime;
+        for(float f = 0; f <= waveMoveTime; f += Time.deltaTime) {
+            transform.position = new Vector3(0, Mathf.Lerp(currentPosition.y, newWaveHeight, f / waveMoveTime), 0);
             yield return null;
         }
     }

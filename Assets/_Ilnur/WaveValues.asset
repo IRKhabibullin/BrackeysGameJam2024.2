@@ -13,18 +13,21 @@ MonoBehaviour:
   m_Name: WaveValues
   m_EditorClassIdentifier: 
   waves:
-  - lowerHeightTime: 5
-    upperHeightTime: 3
+  - highTideTime: 2.5
+    lowTideTime: 2.5
+    highTideTimeout: 7
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - lowerHeightTime: 3
-    upperHeightTime: 3
+  - highTideTime: 2.5
+    lowTideTime: 2.5
+    highTideTimeout: 5
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - lowerHeightTime: 4
-    upperHeightTime: 7
+  - highTideTime: 2.5
+    lowTideTime: 2.5
+    highTideTimeout: 3
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
