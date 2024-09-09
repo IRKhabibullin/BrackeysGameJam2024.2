@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
 
     [SerializeField] private int currentScore;
+    [SerializeField] public event EventHandler OnScoreChanged;
 
     private void Awake()
     {
@@ -31,6 +33,13 @@ public class ScoreManager : MonoBehaviour
 
     private void CollectableItem_OnAnyCollectableItemPicked(object sender, CollectableItem.OnPickedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        currentScore += e.collectableItemSO.pointsValue;
+        OnScoreChanged?.Invoke(this, e);
+
+    }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
     }
 }

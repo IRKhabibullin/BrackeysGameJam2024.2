@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
     private void Update()
     {
         testingTimer += Time.deltaTime;
-        if (testingTimer > 1.5f)
+        if (testingTimer > 3f)
         {
             TestingSpawn();
             testingTimer = 0f;

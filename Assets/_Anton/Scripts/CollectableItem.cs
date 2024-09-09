@@ -7,6 +7,7 @@ public class CollectableItem : MonoBehaviour
 {
     [SerializeField] CollectableItemSO collectableItemSO;
     public static event EventHandler <OnPickedEventArgs> OnAnyCollectableItemPicked;
+    private String playerLayerMaskString = "Player"; //hardcoded for speed
 
     public class OnPickedEventArgs : EventArgs
     {
@@ -17,6 +18,14 @@ public class CollectableItem : MonoBehaviour
     public CollectableItemSO GetCollectableItemData()
     {
         return collectableItemSO;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(playerLayerMaskString))
+        {
+            PickItem();
+        }
     }
 
     //use when you need to pickup item
