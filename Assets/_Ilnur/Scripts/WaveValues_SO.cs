@@ -31,9 +31,6 @@ public class WaveData
     [Tooltip("Количество полезных предметов")] public int usefulItemsSpawnRate;
     [Tooltip("Количество негативных предметов")] public int uselessItemsSpawnRate;
     [Tooltip("Количество препятствий")] public int obstaclesSpawnRate;
-
-    public float highTideLevel;
-    public float lowTideLevel;
 }
 
 public enum WaveLayer
@@ -55,4 +52,6 @@ public class WaveLayerData
     public Color color;
     public float upperBorder;
     public float lowerBorder;
+    
+    [NonSerialized] public float highTideY;
 }

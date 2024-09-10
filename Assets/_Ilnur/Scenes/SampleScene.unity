@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 1942975221}
   - component: {fileID: 1942975220}
   - component: {fileID: 1942975219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Beach
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,35 +22,29 @@ public class WaveController : MonoBehaviour
         StartCoroutine(_rippleCoroutine);
     }
 
-    private void GenerateWaterLevels()
+    private void OnDrawGizmos()
     {
-        foreach (var waveData in waveValues.waves)
+        foreach (var waveLayer in waveLayers.waveLayers)
         {
-            var waveLayer = waveLayers.GetWaveLayer(waveData.highTideLayer);
-            var highWaterPlane = new Plane(transform.up, new Vector3(0, waveLayer.upperBorder, 0));
-            waveData.highTideLevel = GetWaterLevel(highWaterPlane);
-            var lowWaterPlane = new Plane(transform.up, new Vector3(0, waveLayer.lowerBorder, 0));
-            waveData.lowTideLevel = GetWaterLevel(lowWaterPlane);
+            Gizmos.color = waveLayer.color;
+            Gizmos.DrawSphere(new Vector3(0, waveLayer.highTideY, 0), 1);
         }
     }
 
-    private float GetWaterLevel(Plane waterPlane)
+    private void GenerateWaterLevels()
     {
-        var linePoint = Vector3.zero;
-        var planeNormal = waterPlane.normal;
-
-        var lineDirection = Vector3.Cross(beachPlane.up, Vector3.Cross(planeNormal, beachPlane.up));
-
-        var numerator = Vector3.Dot(planeNormal, lineDirection);
-
-        if (Mathf.Abs(numerator) > 0.000001f)
+        foreach (var waveLayer in waveLayers.waveLayers)
         {
-            var planeToPlane = waterPlane.ClosestPointOnPlane(transform.position) - beachPlane.position;
-            var t = Vector3.Dot(planeNormal, planeToPlane) / numerator;
-            linePoint = beachPlane.position + t * lineDirection;
-        }
+            var waveMiddle = (waveLayer.upperBorder - waveLayer.lowerBorder) / 2;
+            var boxCenter = new Vector3(0, 10, waveLayer.lowerBorder + waveMiddle);
+            var halfExtents = new Vector3(transform.localScale.x / 2, 0.01f, waveMiddle);
 
-        return linePoint.z;
+            if (Physics.BoxCast(boxCenter, halfExtents, Vector3.down, out var raycastHit, Quaternion.identity,
+                LayerMask.GetMask(new[] {"Beach"})))
+            {
+                waveLayer.highTideY = raycastHit.point.y;
+            }
+        }
     }
 
     private IEnumerator RippleCoroutine()

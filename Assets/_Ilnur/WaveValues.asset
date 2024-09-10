@@ -17,29 +17,29 @@ MonoBehaviour:
     lowTideLayer: -1
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 7
+    highTideTimeout: 1
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    highTideLevel: 9.682985
-    lowTideLevel: 9.682985
+    highTideLevel: 161.38307
+    lowTideLevel: 0
   - highTideLayer: 2
     lowTideLayer: -2
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 5
+    highTideTimeout: 1
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    highTideLevel: 19.36597
-    lowTideLevel: 19.36597
+    highTideLevel: 322.76614
+    lowTideLevel: 161.38307
   - highTideLayer: 3
     lowTideLayer: -4
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 3
+    highTideTimeout: 1
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    highTideLevel: 29.04895
-    lowTideLevel: 29.048954
+    highTideLevel: 484.14923
+    lowTideLevel: 322.76614
