@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: WaveLayers
+  m_EditorClassIdentifier: Assembly-CSharp::WaveLayers_SO
+  waveLayers:
+  - layer: 3
+    color: {r: 1, g: 0, b: 0, a: 1}
+    upperBorder: 1.8
+    lowerBorder: 1.2
+  - layer: 2
+    color: {r: 1, g: 0.40555555, b: 0, a: 1}
+    upperBorder: 1.2
+    lowerBorder: 0.6
+  - layer: 1
+    color: {r: 1, g: 0.9166383, b: 0, a: 1}
+    upperBorder: 0.6
+    lowerBorder: 0
+  - layer: 0
+    color: {r: 0.045454502, g: 1, b: 0, a: 1}
+    upperBorder: 0
+    lowerBorder: -0.6
+  - layer: -1
+    color: {r: 0, g: 1, b: 0.816092, a: 1}
+    upperBorder: -0.6
+    lowerBorder: -1.2
+  - layer: -2
+    color: {r: 0, g: 0.17514133, b: 1, a: 1}
+    upperBorder: -1.2
+    lowerBorder: -1.8
+  - layer: -3
+    color: {r: 0.9772725, g: 0, b: 1, a: 1}
+    upperBorder: -1.8
+    lowerBorder: -2.4
+  - layer: -4
+    color: {r: 0, g: 0, b: 0, a: 1}
+    upperBorder: -2.4
+    lowerBorder: -3

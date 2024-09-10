@@ -1262,9 +1262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720179db8e4a7f048a4724ea90804b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lowWaveHeight: -0.5
-  highWaveHeight: 0.5
   waveValues: {fileID: 11400000, guid: a99d13a096f6a244b8f2778317d16110, type: 2}
+  waveLayers: {fileID: 11400000, guid: a2def6c59fb3b1c40b0e227b9f6ca461, type: 2}
+  beachPlane: {fileID: 1942975218}
   ripplePeriod: 0
   rippleSpeed: 0.01
 --- !u!23 &2143530531
