@@ -1,10 +1,13 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float baseMoveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 720f;
+    
+    private float currentMoveSpeed = 5f;
 
     private Rigidbody _rb;
     // private Animator _animator;
@@ -14,6 +17,23 @@ public class MovementController : MonoBehaviour
 
     private bool _canMove = true;
     private bool _isMoving;
+
+    public void SetMoveSpeed(float percent)
+    {
+        currentMoveSpeed = baseMoveSpeed * percent;
+    }
+
+    public void SetMoveSpeed(float percent, float duration)
+    {
+        currentMoveSpeed = baseMoveSpeed * percent;
+    }
+
+    private IEnumerator SetMoveSpeedCoroutine(float percent, float duration)
+    {
+        SetMoveSpeed(percent);
+        yield return new WaitForSeconds(duration);
+        SetMoveSpeed(1);
+    }
 
     protected void Awake()
     {
@@ -60,7 +80,7 @@ public class MovementController : MonoBehaviour
         if (!_canMove)
             return false;
 
-        var moveVector = new Vector3(_moveInput.x, 0, _moveInput.y) * (moveSpeed * Time.fixedDeltaTime);
+        var moveVector = new Vector3(_moveInput.x, 0, _moveInput.y) * (currentMoveSpeed * Time.fixedDeltaTime);
         if (moveVector == Vector3.zero)
             return false;
 
