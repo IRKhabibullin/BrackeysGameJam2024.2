@@ -36,5 +36,5 @@ public class WaterLevelData
     public float upperBorder;
     public float lowerBorder;
     
-    [NonSerialized] public float highTideY;
+    public float highTideY;
 }

@@ -11,8 +11,8 @@ public class BeachLayersVisualizer : MonoBehaviour
         foreach (var waterLevel in waterLevels.waterLevels)
         {
             Gizmos.color = waterLevel.color;
-            Gizmos.DrawCube(transform.position + new Vector3(49, 0.01f, waterLevel.upperBorder - 0.2f), layerMarkSize);
-            Gizmos.DrawCube(transform.position + new Vector3(49, 0.01f, waterLevel.lowerBorder + 0.2f), layerMarkSize);
+            Gizmos.DrawCube(transform.position + new Vector3(39, 0.01f, waterLevel.upperBorder - 0.2f), layerMarkSize);
+            Gizmos.DrawCube(transform.position + new Vector3(39, 0.01f, waterLevel.lowerBorder + 0.2f), layerMarkSize);
         }
     }
 }

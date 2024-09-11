@@ -7,10 +7,10 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float baseMoveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 720f;
     
-    private float currentMoveSpeed = 5f;
+    private float currentMoveSpeed;
 
     private Rigidbody _rb;
-    // private Animator _animator;
+    [SerializeField] private Animator _animator;
     
     private PlayerInputActions _playerControls;
     private Vector2 _moveInput;
@@ -39,6 +39,8 @@ public class MovementController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _playerControls = new PlayerInputActions();
+
+        currentMoveSpeed = baseMoveSpeed;
     }
     
     private void OnEnable()
@@ -71,7 +73,7 @@ public class MovementController : MonoBehaviour
         if (_isMoving != hasMoved)
         {
             _isMoving = hasMoved;
-            // _animator.SetBool(AnimatorParameters.IsWalking, hasMoved);
+            _animator.SetBool("IsWalking", hasMoved);
         }
     }
 
