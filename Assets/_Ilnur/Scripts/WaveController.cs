@@ -5,7 +5,7 @@ using UnityEngine;
 public class WaveController : MonoBehaviour
 {
     [SerializeField] private WaveValues_SO waveValues;
-    [SerializeField] private WaveLayers_SO waveLayers;
+    [SerializeField] private WaterLevels_SO waterLevels;
     [SerializeField] private Transform beachPlane;
 
     [SerializeField] private float ripplePeriod;
@@ -24,25 +24,25 @@ public class WaveController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        foreach (var waveLayer in waveLayers.waveLayers)
+        foreach (var waterLevel in waterLevels.waterLevels)
         {
-            Gizmos.color = waveLayer.color;
-            Gizmos.DrawSphere(new Vector3(0, waveLayer.highTideY, 0), 1);
+            Gizmos.color = waterLevel.color;
+            Gizmos.DrawSphere(new Vector3(0, waterLevel.highTideY, 0), 1);
         }
     }
 
     private void GenerateWaterLevels()
     {
-        foreach (var waveLayer in waveLayers.waveLayers)
+        foreach (var waterLevel in waterLevels.waterLevels)
         {
-            var waveMiddle = (waveLayer.upperBorder - waveLayer.lowerBorder) / 2;
-            var boxCenter = new Vector3(0, 10, waveLayer.lowerBorder + waveMiddle);
+            var waveMiddle = (waterLevel.upperBorder - waterLevel.lowerBorder) / 2;
+            var boxCenter = new Vector3(0, 10, waterLevel.lowerBorder + waveMiddle);
             var halfExtents = new Vector3(transform.localScale.x / 2, 0.01f, waveMiddle);
 
             if (Physics.BoxCast(boxCenter, halfExtents, Vector3.down, out var raycastHit, Quaternion.identity,
                 LayerMask.GetMask(new[] {"Beach"})))
             {
-                waveLayer.highTideY = raycastHit.point.y;
+                waterLevel.highTideY = raycastHit.point.y;
             }
         }
     }
@@ -51,10 +51,10 @@ public class WaveController : MonoBehaviour
     {
         foreach (var waveData in waveValues.waves)
         {
-            yield return MoveWaveCoroutine(waveLayers.GetWaveLayer(waveData.lowTideLayer).lowerBorder, waveData.lowTideTime);
+            yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.lowTideLayer).lowerBorder, waveData.lowTideTime);
             yield return new WaitForSeconds(waveData.highTideTimeout);
             OnWaveUp?.Invoke(this, waveData);
-            yield return MoveWaveCoroutine(waveLayers.GetWaveLayer(waveData.highTideLayer).upperBorder, waveData.highTideTime);
+            yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.highTideLayer).upperBorder, waveData.highTideTime);
             yield return new WaitForSeconds(0.5f);
         }
     }

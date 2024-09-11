@@ -9,47 +9,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: WaveLayers
+  m_Script: {fileID: 11500000, guid: ea21ea430d9e19847ad0772969a01fef, type: 3}
+  m_Name: WaterLevels
   m_EditorClassIdentifier: Assembly-CSharp::WaveLayers_SO
-  waveLayers:
-  - layer: 3
+  waterLevels:
+  - level: 3
     color: {r: 1, g: 0, b: 0, a: 1}
     upperBorder: 30
     lowerBorder: 20
-    highTideY: 1.858931
-  - layer: 2
-    color: {r: 1, g: 0.40555555, b: 0, a: 1}
+  - level: 2
+    color: {r: 1, g: 0.4766897, b: 0, a: 1}
     upperBorder: 20
     lowerBorder: 10
-    highTideY: 1.239287
-  - layer: 1
-    color: {r: 1, g: 0.9166383, b: 0, a: 1}
+  - level: 1
+    color: {r: 1, g: 0.9120868, b: 0, a: 1}
     upperBorder: 10
     lowerBorder: 0
-    highTideY: 2
-  - layer: 0
-    color: {r: 0.045454502, g: 1, b: 0, a: 1}
+  - level: 0
+    color: {r: 0.36420822, g: 1, b: 0, a: 1}
     upperBorder: 0
     lowerBorder: -10
-    highTideY: 2
-  - layer: -1
-    color: {r: 0, g: 1, b: 0.816092, a: 1}
+  - level: -1
+    color: {r: 0, g: 1, b: 0.9904101, a: 1}
     upperBorder: -10
     lowerBorder: -20
-    highTideY: -0.6196442
-  - layer: -2
-    color: {r: 0, g: 0.17514133, b: 1, a: 1}
+  - level: -2
+    color: {r: 0, g: 0.18699074, b: 1, a: 1}
     upperBorder: -20
     lowerBorder: -30
-    highTideY: -1.239286
-  - layer: -3
-    color: {r: 0.9772725, g: 0, b: 1, a: 1}
+  - level: -3
+    color: {r: 0.9825163, g: 0, b: 1, a: 1}
     upperBorder: -30
     lowerBorder: -40
-    highTideY: -1.858931
-  - layer: -4
+  - level: -4
     color: {r: 0, g: 0, b: 0, a: 1}
     upperBorder: -40
     lowerBorder: -50
-    highTideY: -2.478575

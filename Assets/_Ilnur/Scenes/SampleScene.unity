@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 1942975221}
   - component: {fileID: 1942975220}
   - component: {fileID: 1942975219}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Beach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveValues: {fileID: 11400000, guid: a99d13a096f6a244b8f2778317d16110, type: 2}
-  waveLayers: {fileID: 11400000, guid: a2def6c59fb3b1c40b0e227b9f6ca461, type: 2}
+  waterLevels: {fileID: 11400000, guid: a2def6c59fb3b1c40b0e227b9f6ca461, type: 2}
   beachPlane: {fileID: 1942975218}
   ripplePeriod: 0
   rippleSpeed: 0.01
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6041cd60b4a0e49a9ecd7d90cd34e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveLayers: {fileID: 11400000, guid: a2def6c59fb3b1c40b0e227b9f6ca461, type: 2}
+  waterLevels: {fileID: 11400000, guid: a2def6c59fb3b1c40b0e227b9f6ca461, type: 2}
 --- !u!1001 &5586979994795378286
 PrefabInstance:
   m_ObjectHideFlags: 0
