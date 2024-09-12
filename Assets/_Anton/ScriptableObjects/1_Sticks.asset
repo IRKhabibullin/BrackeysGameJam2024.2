@@ -10,11 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d2a4ce2583ddd9419a6ea7a1d100542, type: 3}
-  m_Name: Object_1
+  m_Name: 1_Sticks
   m_EditorClassIdentifier: 
-  prefab: {fileID: 9078909671114705351, guid: 547a703da0ec31544907c85466c7a9a6, type: 3}
-  sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  objectName: Object_1
   pointsValue: 10
-  shopCost: 100
-  collectionType: 0
+  collectionType: 1

@@ -2,153 +2,277 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SpawnManager : MonoBehaviour
 {
-    //TO-DO:
-    //subscribe to the event when of a wave hitting its max distance
     //create sub-zones within zones (divided on horizontal)
-    //remove Debug.Logs and testing methods/variables
     //make a better system for connecting zones, items and probabilities
 
     [SerializeField] private List<CollectableItem> collectableItemList;
+    [SerializeField] private List<CollectableItemSO> collectableItemSOList;
+    [SerializeField] private WaveValues_SO waveValues_SO;
+    [SerializeField] private WaterLevels_SO waterLevels_SO;
 
-    [SerializeField] private Transform spawnPlane;
+    [SerializeField] private Transform coastPlane;
     [SerializeField] private int maxZoneCount;
-    [SerializeField] private int maxSubZoneCount;
+    [SerializeField] private int subZoneCount;
 
-    private List<SpawnZone> zoneList;
-    [SerializeField] private int defaultPlaneHalfSize = 5;
+    [SerializeField] private Dictionary<int, List<CollectableItemSO>> zonesAndItemsDict = new Dictionary<int, List<CollectableItemSO>>();
 
-    private float testingTimer = 0f;
+    private MeshRenderer planeRenderer;
+    private int currentWaveZoneCount;
+    private List<SpawnZone> currentWaveZoneList;
 
-    private void Awake()
+    private void OnEnable()
     {
+        WaveController.OnWaveUp += WaveController_OnWaveUp;
+    }
 
+    private void OnDisable()
+    {
+        WaveController.OnWaveUp -= WaveController_OnWaveUp;
     }
 
     private void Start()
     {
-        zoneList = new List<SpawnZone>();
-        CreateZones(spawnPlane, maxZoneCount);
+        currentWaveZoneList = new List<SpawnZone>();
+        planeRenderer = coastPlane.GetComponent<MeshRenderer>();
+        FillZonesAndItemsDict(collectableItemSOList);
+
     }
 
-    private void Update()
+    //everything what we do when the wave is up
+    private void WaveController_OnWaveUp(object sender, WaveData waveData)
     {
-        testingTimer += Time.deltaTime;
-        if (testingTimer > 3f)
+        Debug.Log(CalculateCurrentWaveZoneCount((int)waveData.highTideLayer, (int)waveData.lowTideLayer));
+
+        int collectablesSpawnRate = waveData.usefulItemsSpawnRate;
+        int currentZoneCount = CalculateCurrentWaveZoneCount((int)waveData.highTideLayer, (int)waveData.lowTideLayer);
+
+        CreateZones(coastPlane, currentZoneCount, waveData);
+
+        for (int m = 0; m < currentZoneCount; m++) //going through zones to spawn items
         {
-            TestingSpawn();
-            testingTimer = 0f;
+            for (int i = 0; i < collectablesSpawnRate; i++) // spawning item in each zone
+            {
+                SpawnItem(currentWaveZoneList[m]);
+            }
         }
-    }
-
-    public void TestingSpawn()
-    {
-        SpawnItem(zoneList[0]);
-        SpawnItem(zoneList[1]);
-        SpawnItem(zoneList[2]);
     }
 
     public void SpawnItem(SpawnZone zone)
     {
-        //defining which objects can be spawned in certain zones. this should be remade for something better
-        List<int> validObjectSpawnList = new List<int>();
-        switch (zone.zoneId)
+        List<CollectableItem> validObjectSpawnList = new List<CollectableItem> ();
+        List<CollectableItemSO> validObjectInThisZoneSO = new List<CollectableItemSO> ();
+
+        zonesAndItemsDict.TryGetValue(zone.zoneId, out validObjectInThisZoneSO);
+
+        //defining which objects can be spawned in a zone
+        foreach (CollectableItem collectableItem in collectableItemList)
         {
-            case 0:
-                validObjectSpawnList = new List<int> { 0 };
-                break;
-            case 1:
-                validObjectSpawnList = new List<int> { 1 };
-                break;
-            case 2:
-                validObjectSpawnList = new List<int> { 2 };
-                break;
+            CollectableItemSO testCollectableItemSO = collectableItem.GetCollectableItemData();
+            for (int i = 0; i < validObjectInThisZoneSO.Count; i++)
+            {
+                if (testCollectableItemSO == validObjectInThisZoneSO[i])
+                {
+                    validObjectSpawnList.Add(collectableItem);
+                }
+            }
         }
-        //making it so the object is adjusted to the plane position
-        Vector3 worldSpawnPosition = spawnPlane.TransformPoint(ChooseRandomPositionWithinZone(zone));
-        GameObject spawnedObject = Instantiate(ChooseRandomObjectToSpawn(validObjectSpawnList), worldSpawnPosition, Quaternion.identity);
-        spawnedObject.transform.up = spawnPlane.transform.up;
+
+        Quaternion randomRotationY = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        Vector3 worldSpawnPosition = (ChooseRandomPositionWithinZone(zone));
+        GameObject spawnedObject = Instantiate(ChooseRandomObjectToSpawn(validObjectSpawnList), worldSpawnPosition, randomRotationY);
+        Debug.Log("spawnedObject = " + spawnedObject.ToString());
+        //spawnedObject.transform.up = coastPlane.transform.up;
     }
 
-    private GameObject ChooseRandomObjectToSpawn(List<int> validObjectSpawnList)
+    private GameObject ChooseRandomObjectToSpawn(List<CollectableItem> validObjectSpawnList)
     {
-        //chosing an object which is eligable for the zone
         int randomIndex = Random.Range(0, validObjectSpawnList.Count);
-        int randomValidIndex = validObjectSpawnList[randomIndex];
-        return collectableItemList[randomValidIndex].gameObject;
+        return validObjectSpawnList[randomIndex].gameObject;
     }
 
     private Vector3 ChooseRandomPositionWithinZone(SpawnZone zone)
     {
-        float randomIndexX = Random.Range(zone.leftB, zone.rightB);
-        float randomIndexZ = Random.Range(zone.bottomB, zone.topB);
-        Vector3 position = new Vector3(randomIndexX, 0, randomIndexZ);
+        float randomX = Random.Range(zone.leftB, zone.rightB);
+        Debug.Log("randomX" + randomX);
+        float randomZ = Random.Range(zone.bottomB, zone.topB);
+        Debug.Log("randomZ" + randomZ);
+        float yCoordinate = GetYCoordinateOnPlane(randomX, randomZ);
+
+        Vector3 position = new Vector3(randomX, yCoordinate, randomZ);
         return position;
     }
 
-    //Is it needed to remake this to base upon bottom and top of wave instead of bottom and top of spawn plane?
-    public void CreateZones(Transform spawnPlane, int zoneCount)
+    private float GetYCoordinateOnPlane(float xValue, float zValue)
     {
-        //calculating size of plane which needs to be devided
-        //Vector3 localScale = spawnPlane.localScale;
-        float initialZoneWidth = defaultPlaneHalfSize; // half localScale.x * 
-        float initialZoneHight = defaultPlaneHalfSize; // half localScale.z * 
-        float diffBetweenZones = initialZoneHight * 2 / zoneCount; //*localScale.z
-        //storing offsets
-        float bottomOffset = diffBetweenZones / 7; // offset not to spawn too close to the ocean side
-        float topOffset = diffBetweenZones / 5; // offset to hide tall items near the end of the wave
-        float itemSizeOffset = diffBetweenZones / 10; // stub value for now, making it so that items don't intersect if spawned at boundaries of different zones
+        int highPosition = 10;
+        Vector3 rayOrigin = new Vector3(xValue, highPosition, zValue);
+        Vector3 rayOriginDirection = Vector3.down;
 
-        //Testing
-        //Debug.Log("initialZoneHight = " + initialZoneHight);
-        //Debug.Log("initialZoneWidth = " + initialZoneWidth);
-        //Debug.Log("diffBetweenZones = " + diffBetweenZones);
+        Ray yFinderRay = new Ray(rayOrigin, rayOriginDirection);
+        float yValue = 99; //stub
 
-        for (int step = 0; step < maxZoneCount; step++)
+        RaycastHit hit;
+
+        int layerMask = LayerMask.GetMask("Beach");
+        if (Physics.Raycast(yFinderRay, out hit, Mathf.Infinity, layerMask))
         {
-            //creating stub top and bottom to avoid error in SpawnZone creation
-            float topB = 0;
-            float bottomB = 0;
-
-            //cycling to set zone boundaries
-            if (step == 0)
+            if(hit.collider.transform == coastPlane)
             {
-                topB = -initialZoneHight + (step + 1) * diffBetweenZones - itemSizeOffset;
-                bottomB = -initialZoneHight + bottomOffset;
+                yValue = hit.point.y;
             }
-            else if (step == maxZoneCount - 1)
-            {
-                topB = initialZoneHight - topOffset;
-                bottomB = initialZoneHight - diffBetweenZones + itemSizeOffset;
-            }
-            else //for zones inbetween first and last
-            {
-                topB = -initialZoneHight + (step + 1) * diffBetweenZones - itemSizeOffset;
-                bottomB = -initialZoneHight + step * diffBetweenZones + itemSizeOffset;
-            }
-            float leftB = -initialZoneWidth + itemSizeOffset;
-            float rightB = initialZoneWidth - itemSizeOffset;
-            int zoneId = step;
+        }
 
-            SpawnZone zone = new SpawnZone(zoneId, leftB, rightB, topB, bottomB);
-            zoneList.Add(zone);
+        if (yValue == 99)
+        {
+            Debug.LogError("Y value is not correct: " + yValue);
+        }
 
-            //Testing
-            Debug.Log("zoneId: " + zoneId);
-            //Debug.Log("leftB: " + leftB);
-            //Debug.Log("rightB: " + rightB);
-            Debug.Log("topB: " + topB);
-            Debug.Log("bottomB: " + bottomB);
-            Debug.Log("============");
+        return yValue;
+    }
+
+    public void CreateZones(Transform spawnPlane, int zoneCount, WaveData waveData)
+    {
+        currentWaveZoneList.Clear();
+        float diffBetweenZones = (FindZoneZCoordinates(waveData)[0] - FindZoneZCoordinates(waveData)[1]) / zoneCount;
+
+        //storing offsets
+        float bottomOffset = diffBetweenZones / 4; // offset not to spawn too close to the ocean side, divider is semi-random number. this only works good if zones are of the same size
+        float topOffset = diffBetweenZones / 3f; // offset to hide tall items near the end of the wave, divider is semi-random. this only works good if zones are of the same size
+        float itemSizeOffset = diffBetweenZones / 10; // making it so that items don't intersect if spawned at boundaries of different zones, the better but harder way would be to calculate size of the biggest object and make an offset for that
+
+        if (zoneCount > 1)
+        {
+            for (int i = 0; i < zoneCount; i++)
+            {
+                int highLayerInt = (int)waveData.highTideLayer - i;
+                WaterLevel waterLevelTop = (WaterLevel)highLayerInt;
+
+                float topZBoundary = 99; //stub
+                float bottomZBoundary = 99; //stub
+
+                List<float> zoneZcoordinates = FindZoneZCoordinates(waterLevelTop);
+                if (i == 0) // this is the first zone, closest to the shore
+                {
+                    topZBoundary = zoneZcoordinates[0] - itemSizeOffset - topOffset;
+                    bottomZBoundary = zoneZcoordinates[1] + itemSizeOffset;
+
+                    if (topZBoundary <= bottomZBoundary)
+                    {
+                        Debug.LogError("Zone boundaries are not correct: " + "top: " + topZBoundary + ", bottom: " + bottomZBoundary);
+                    }
+                }
+                else if (i == zoneCount - 1) //this is the last zone, closest to the sea
+                {
+                    topZBoundary = zoneZcoordinates[0] - itemSizeOffset;
+                    bottomZBoundary = zoneZcoordinates[1] + itemSizeOffset + bottomOffset;
+
+                    if (topZBoundary <= bottomZBoundary)
+                    {
+                        Debug.LogError("Zone boundaries are not correct: " + "top: " + topZBoundary + ", bottom: " + bottomZBoundary);
+                    }
+                }
+                else //this is any zone inbetween
+                {
+                    topZBoundary = zoneZcoordinates[0] - itemSizeOffset;
+                    bottomZBoundary = zoneZcoordinates[1] + itemSizeOffset;
+
+                    if (topZBoundary <= bottomZBoundary)
+                    {
+                        Debug.LogError("Zone boundaries are not correct: " + "top: " + topZBoundary + ", bottom: " + bottomZBoundary);
+                    }
+                }
+
+                float leftBoundary = planeRenderer.bounds.min.x + itemSizeOffset + diffBetweenZones * 2;
+                float rightBoundary = planeRenderer.bounds.max.x - itemSizeOffset - diffBetweenZones * 2;
+
+                if (topZBoundary == 99 || bottomZBoundary == 99)
+                {
+                    Debug.LogError("topZBoundary or bottomZBoundary wasn't properly assigned");
+                }
+                SpawnZone zone = new SpawnZone(i, waterLevelTop, leftBoundary, rightBoundary, topZBoundary, bottomZBoundary);
+                currentWaveZoneList.Add(zone);
+                Debug.Log("Zone created: " + zone.ToString());
+            }
+        }
+        else
+        {
+            Debug.LogError("Zone count is less than 2: " + zoneCount); //it is required to have at least 2 zones to hide objects better beneath the water
         }
     }
 
+    //used to get the number of zones to spawn objects in
+    private int CalculateCurrentWaveZoneCount(int highLevel, int lowLevel)
+    {
+        int zoneCount = Mathf.Abs(highLevel) + Mathf.Abs(lowLevel) + 1; //+1 because of 0 zone
+        return zoneCount;
+    }
 
-    //Calculate boundaries of a big plane - DONE
-    //Divide it by sections each with its own boundaries - DONE
-    //Spawn only VALID objects (valid types) in each section
+    //this one might be unnecessary, left it just in case, it can calculate Z for the whole spawning area
+    private List<float> FindZoneZCoordinates(WaveData waveData)
+    {
+        float topZcoordinate = 99; //just creating a variable, probably there is a better way
+        float bottomZcoordinate = 99; //just creating a variable, probably there is a better way
 
+        foreach (WaterLevelData waterLevelData in waterLevels_SO.GetWaterLevelsList())
+        {
+            if (waveData.highTideLayer == waterLevelData.level)
+            {
+                topZcoordinate = waterLevelData.upperBorder;
+            }
+            if (waveData.lowTideLayer == waterLevelData.level)
+            {
+                bottomZcoordinate = waterLevelData.lowerBorder;
+            }
+        }
 
+        if (topZcoordinate == 99 || bottomZcoordinate == 99)
+        {
+            Debug.LogError("topZcoordinate or bottomZcoordinate wasn't properly assigned");
+        }
+
+        List<float> verticalCoordinates = new List<float>() { topZcoordinate, bottomZcoordinate };
+        return verticalCoordinates;
+    }
+
+    //returning Z of a specific coast zone
+    private List<float> FindZoneZCoordinates(WaterLevel topLevel)
+    {
+        float topZcoordinate = 99; //just creating a variable, probably there is a better way
+        float bottomZcoordinate = 99; //just creating a variable, probably there is a better way
+
+        foreach (WaterLevelData waterLevelData in waterLevels_SO.GetWaterLevelsList())
+        {
+            if (topLevel == waterLevelData.level)
+            {
+                topZcoordinate = waterLevelData.upperBorder;
+                bottomZcoordinate = waterLevelData.lowerBorder;
+            }
+        }
+
+        if (topZcoordinate == 99 || bottomZcoordinate == 99)
+        {
+            Debug.LogError("topZcoordinate or bottomZcoordinate wasn't properly assigned");
+        }
+
+        List<float> verticalCoordinates = new List<float>() { topZcoordinate, bottomZcoordinate };
+        return verticalCoordinates;
+    }
+
+    private void FillZonesAndItemsDict(List<CollectableItemSO> listOfItemsSO)
+    {
+        //this is done in an ugly-hardcody style
+
+        zonesAndItemsDict.Add(0, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });
+        zonesAndItemsDict.Add(1, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });
+        zonesAndItemsDict.Add(2, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2] });
+        zonesAndItemsDict.Add(3, new List<CollectableItemSO> { listOfItemsSO[2], listOfItemsSO[3] });
+        zonesAndItemsDict.Add(4, new List<CollectableItemSO> { listOfItemsSO[3], listOfItemsSO[4] });
+        zonesAndItemsDict.Add(5, new List<CollectableItemSO> { listOfItemsSO[4], listOfItemsSO[5] });
+        zonesAndItemsDict.Add(6, new List<CollectableItemSO> { listOfItemsSO[4], listOfItemsSO[5], listOfItemsSO[6] });
+        zonesAndItemsDict.Add(7, new List<CollectableItemSO> { listOfItemsSO[5], listOfItemsSO[6] });
+    }
 }

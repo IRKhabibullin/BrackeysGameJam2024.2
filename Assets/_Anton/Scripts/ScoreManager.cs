@@ -7,19 +7,8 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    [SerializeField] private int currentScore;
-    [SerializeField] public event EventHandler OnScoreChanged;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There is more than on LevelGrid! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
+    [SerializeField] private static int currentScore;
+    public static event EventHandler OnScoreChanged;
 
     private void ResetScore()
     {
@@ -39,13 +28,13 @@ public class ScoreManager : MonoBehaviour
         MovementController.OnWaterTouched -= ResetScore;
     }
 
-    private void CollectableItem_OnAnyCollectableItemPicked(object sender, CollectableItem.OnPickedEventArgs e)
+    private void CollectableItem_OnAnyCollectableItemPicked(object sender, CollectableItemSO e)
     {
-        currentScore += e.collectableItemSO.pointsValue;
-        OnScoreChanged?.Invoke(this, e);
+        currentScore += e.pointsValue;
+        OnScoreChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public int GetCurrentScore()
+    public static int GetCurrentScore()
     {
         return currentScore;
     }

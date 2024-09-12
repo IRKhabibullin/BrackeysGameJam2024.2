@@ -6,13 +6,9 @@ using UnityEngine;
 public class CollectableItem : MonoBehaviour
 {
     [SerializeField] CollectableItemSO collectableItemSO;
-    public static event EventHandler <OnPickedEventArgs> OnAnyCollectableItemPicked;
+    public static event EventHandler <CollectableItemSO> OnAnyCollectableItemPicked;
     private String playerLayerMaskString = "Player"; //hardcoded for speed
 
-    public class OnPickedEventArgs : EventArgs
-    {
-        public CollectableItemSO collectableItemSO;
-    }
 
     //use to get item data
     public CollectableItemSO GetCollectableItemData()
@@ -31,10 +27,7 @@ public class CollectableItem : MonoBehaviour
     //use when you need to pickup item
     public void PickItem()
     {
-        OnAnyCollectableItemPicked?.Invoke(this, new OnPickedEventArgs
-        {
-            collectableItemSO = GetCollectableItemData(),
-        });
+        OnAnyCollectableItemPicked?.Invoke(this, collectableItemSO);
         DestroySelf();
     }
 
