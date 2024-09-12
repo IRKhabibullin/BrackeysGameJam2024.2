@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private int maxSubZoneCount;
 
     private List<SpawnZone> zoneList;
-    private int defaultPlaneHalfSize = 5;
+    [SerializeField] private int defaultPlaneHalfSize = 5;
 
     private float testingTimer = 0f;
 

@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementController : MonoBehaviour
 {
+    public static Action OnWaterTouched;
+    
     [SerializeField] private float baseMoveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 720f;
     
@@ -17,6 +20,15 @@ public class MovementController : MonoBehaviour
 
     private bool _canMove = true;
     private bool _isMoving;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            OnWaterTouched?.Invoke();
+            transform.position = new Vector3(0, 6, 26);
+        }
+    }
 
     public void SetMoveSpeed(float percent)
     {

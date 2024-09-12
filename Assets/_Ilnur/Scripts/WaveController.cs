@@ -55,4 +55,21 @@ public class WaveController : MonoBehaviour
             yield return null;
         }
     }
+
+    private void ResetWaves()
+    {
+        StopCoroutine(_rippleCoroutine);
+        _rippleCoroutine = RippleCoroutine();
+        StartCoroutine(_rippleCoroutine);
+    }
+    
+    private void OnEnable()
+    {
+        MovementController.OnWaterTouched += ResetWaves;
+    }
+
+    private void OnDisable()
+    {
+        MovementController.OnWaterTouched -= ResetWaves;
+    }
 }

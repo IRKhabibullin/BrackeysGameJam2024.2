@@ -21,21 +21,28 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
     }
 
+    private void ResetScore()
+    {
+        currentScore = 0;
+        OnScoreChanged?.Invoke(this, null);
+    }
+
     private void OnEnable()
     {
         CollectableItem.OnAnyCollectableItemPicked += CollectableItem_OnAnyCollectableItemPicked;
+        MovementController.OnWaterTouched += ResetScore;
     }
 
     private void OnDisable()
     {
         CollectableItem.OnAnyCollectableItemPicked -= CollectableItem_OnAnyCollectableItemPicked;
+        MovementController.OnWaterTouched -= ResetScore;
     }
 
     private void CollectableItem_OnAnyCollectableItemPicked(object sender, CollectableItem.OnPickedEventArgs e)
     {
         currentScore += e.collectableItemSO.pointsValue;
         OnScoreChanged?.Invoke(this, e);
-
     }
 
     public int GetCurrentScore()
