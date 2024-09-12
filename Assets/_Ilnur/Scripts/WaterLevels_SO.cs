@@ -13,6 +13,11 @@ public class WaterLevels_SO : ScriptableObject
     {
         return waterLevels.First(x => x.level == level);
     }
+
+    public List<WaterLevelData> GetWaterLevelsList()
+    {
+        return waterLevels;
+    }
 }
 
 public enum WaterLevel

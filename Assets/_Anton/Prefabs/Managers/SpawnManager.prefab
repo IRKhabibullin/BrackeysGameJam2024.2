@@ -45,10 +45,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableItemList:
-  - {fileID: -6452419363334668310, guid: 547a703da0ec31544907c85466c7a9a6, type: 3}
+  - {fileID: 7049332572318753601, guid: 7b47dce8bd7f7d84eb8c880c35f789b5, type: 3}
+  - {fileID: 7049332572318753601, guid: 26539cf7cf9a827428cfbb83c3d1c291, type: 3}
+  - {fileID: 7049332572318753601, guid: 9e10e1d56c9d19343a3c975986719bf6, type: 3}
+  - {fileID: 7049332572318753601, guid: 467996afde8dfee428a033ecab8737e0, type: 3}
+  - {fileID: 7049332572318753601, guid: 2a3e1550181b7b5488f078fd8b12838e, type: 3}
   - {fileID: 7049332572318753601, guid: c2212466a25f3d54595fa05ad5611a88, type: 3}
+  - {fileID: -6452419363334668310, guid: 886c0e3d06242f942b02456b6577418f, type: 3}
+  - {fileID: -6452419363334668310, guid: 547a703da0ec31544907c85466c7a9a6, type: 3}
+  - {fileID: -6452419363334668310, guid: efdf794415f58ef48b426cf3a763fb02, type: 3}
+  - {fileID: -6452419363334668310, guid: 839544a18695c8e43934d30467f79a45, type: 3}
+  - {fileID: -6452419363334668310, guid: 72df6d996427dd540aec07f2fcf4e77c, type: 3}
+  - {fileID: 7049332572318753601, guid: 8cb3776eb4abdb54abaa8f39c4c5f628, type: 3}
+  - {fileID: 7049332572318753601, guid: 396e51e0607afd34b9da88e756d74220, type: 3}
+  - {fileID: 7049332572318753601, guid: bec6aecc22e32c3449944d82713cd15f, type: 3}
   - {fileID: 7967697574842659550, guid: 0318da0eda6a9f34692cc80c811897e1, type: 3}
-  spawnPlane: {fileID: 0}
-  maxZoneCount: 3
-  maxSubZoneCount: 12
-  typesOfItemsCount: 3
+  - {fileID: 7967697574842659550, guid: d0fe3b43bd2d2844b8dc7a7a068ebabe, type: 3}
+  - {fileID: 7967697574842659550, guid: 0cebe65fca56d9a4380e989bbccab660, type: 3}
+  - {fileID: 7049332572318753601, guid: 65c7be20139edcd4d97c90447e91eec5, type: 3}
+  - {fileID: 7049332572318753601, guid: a28e86210dba1494a8a7ac3bf57c670c, type: 3}
+  - {fileID: 7049332572318753601, guid: 4f34f800164773846b2830c99ead7f18, type: 3}
+  - {fileID: 7049332572318753601, guid: de2e3beae5b97c54ba79b1e1402ef3d4, type: 3}
+  collectableItemSOList:
+  - {fileID: 11400000, guid: 35efd16d031fb3942b2e383b81505360, type: 2}
+  - {fileID: 11400000, guid: b43b36f71bd179d40aaa4ed7a1922d4b, type: 2}
+  - {fileID: 11400000, guid: 83f137a84c91a75459d421c801113439, type: 2}
+  - {fileID: 11400000, guid: e26b3ee4092af5a408b2c6773539f5f1, type: 2}
+  - {fileID: 11400000, guid: c3a11f8e1ea326f42b0d0afcda9ba93e, type: 2}
+  - {fileID: 11400000, guid: 6850c6ce51cde8742b790f1d06243297, type: 2}
+  - {fileID: 11400000, guid: 2d312302c9cdcc14c83e88b5a3fffd04, type: 2}
+  waveValues_SO: {fileID: 11400000, guid: e5e18a5302a04b64295eac7dbf519474, type: 2}
+  waterLevels_SO: {fileID: 11400000, guid: f1478edda29481a479c7916d0c51bd10, type: 2}
+  coastPlane: {fileID: 0}
+  maxZoneCount: 7
+  subZoneCount: 12

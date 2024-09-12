@@ -39,8 +39,8 @@ public class WaveController : MonoBehaviour
         {
             yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.lowTideLayer).highTideY, waveData.lowTideTime);
             yield return new WaitForSeconds(waveData.highTideTimeout);
-            OnWaveUp?.Invoke(this, waveData);
             yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.highTideLayer).highTideY, waveData.highTideTime);
+            OnWaveUp?.Invoke(this, waveData);
             yield return new WaitForSeconds(0.5f);
         }
     }
