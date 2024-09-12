@@ -26,7 +26,7 @@ public class MovementController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             OnWaterTouched?.Invoke();
-            transform.position = new Vector3(0, 6, 26);
+            transform.position = new Vector3(0, 1.2f, 26);
         }
     }
 

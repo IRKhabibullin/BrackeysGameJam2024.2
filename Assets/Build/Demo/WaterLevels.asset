@@ -17,39 +17,39 @@ MonoBehaviour:
     color: {r: 1, g: 0, b: 0, a: 1}
     upperBorder: 24
     lowerBorder: 18
-    highTideY: 2.0724497
+    highTideY: 1.1107905
   - level: 2
     color: {r: 1, g: 0.4766897, b: 0, a: 1}
     upperBorder: 18
     lowerBorder: 12
-    highTideY: 1.910322
+    highTideY: 0.50719786
   - level: 1
     color: {r: 1, g: 0.9120868, b: 0, a: 1}
     upperBorder: 12
     lowerBorder: 6
-    highTideY: 1.1568193
+    highTideY: 0.50719786
   - level: 0
     color: {r: 0.36420822, g: 1, b: 0, a: 1}
     upperBorder: 6
     lowerBorder: 0
-    highTideY: 0.39004135
+    highTideY: 0.50719786
   - level: -1
     color: {r: 0, g: 1, b: 0.9904101, a: 1}
     upperBorder: 0
     lowerBorder: -6
-    highTideY: -0.28203297
+    highTideY: 0.50719786
   - level: -2
     color: {r: 0, g: 0.18699074, b: 1, a: 1}
     upperBorder: -6
     lowerBorder: -12
-    highTideY: -1.0229683
+    highTideY: 0.50719786
   - level: -3
     color: {r: 0.9825163, g: 0, b: 1, a: 1}
     upperBorder: -12
     lowerBorder: -18
-    highTideY: -1.7996316
+    highTideY: 0.50719786
   - level: -4
     color: {r: 0, g: 0, b: 0, a: 1}
     upperBorder: -18
     lowerBorder: -24
-    highTideY: -2.6708746
+    highTideY: 0

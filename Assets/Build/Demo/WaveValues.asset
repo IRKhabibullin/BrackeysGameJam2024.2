@@ -17,95 +17,47 @@ MonoBehaviour:
     lowTideLayer: -1
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 1
+    highTideTimeout: 0.5
     usefulItemsSpawnRate: 6
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 0
+  - highTideLayer: 1
     lowTideLayer: -1
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 1
+    highTideTimeout: 0.5
     usefulItemsSpawnRate: 6
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 0
+  - highTideLayer: 1
+    lowTideLayer: -2
+    highTideTime: 2.5
+    lowTideTime: 2.5
+    highTideTimeout: 0.5
+    usefulItemsSpawnRate: 6
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0
+  - highTideLayer: 2
+    lowTideLayer: -2
+    highTideTime: 2.5
+    lowTideTime: 2.5
+    highTideTimeout: 0.5
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0
+  - highTideLayer: 3
     lowTideLayer: -1
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 6
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 1
-    lowTideLayer: -2
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
+    highTideTimeout: 0.5
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 1
-    lowTideLayer: -2
+  - highTideLayer: 3
+    lowTideLayer: 0
     highTideTime: 2.5
     lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 1
-    lowTideLayer: -2
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 1
-    lowTideLayer: -2
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 2
-    lowTideLayer: -3
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 2
-    lowTideLayer: -3
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 2
-    lowTideLayer: -3
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 2
-    lowTideLayer: -3
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - highTideLayer: 2
-    lowTideLayer: -3
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
+    highTideTimeout: 0.5
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
