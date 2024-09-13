@@ -74,8 +74,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3a11f8e1ea326f42b0d0afcda9ba93e, type: 2}
   - {fileID: 11400000, guid: 6850c6ce51cde8742b790f1d06243297, type: 2}
   - {fileID: 11400000, guid: 2d312302c9cdcc14c83e88b5a3fffd04, type: 2}
+  garbageList:
+  - {fileID: 7049332572318753601, guid: 6cb40e3adbccc114abfa739eaba08df8, type: 3}
+  - {fileID: 7049332572318753601, guid: 695cbda867d30c047818eba1dfb2c837, type: 3}
   waveValues_SO: {fileID: 11400000, guid: e5e18a5302a04b64295eac7dbf519474, type: 2}
   waterLevels_SO: {fileID: 11400000, guid: f1478edda29481a479c7916d0c51bd10, type: 2}
   coastPlane: {fileID: 0}
   maxZoneCount: 7
-  subZoneCount: 12
+  maxGarbageCount: 5
+  startingGarbageZone: 3

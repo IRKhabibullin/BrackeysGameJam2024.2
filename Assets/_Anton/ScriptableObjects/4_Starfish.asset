@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 4_Starfish
   m_EditorClassIdentifier: 
   pointsValue: 40
-  collectionType: 1
+  collectionType: 4

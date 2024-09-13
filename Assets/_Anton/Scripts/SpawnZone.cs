@@ -18,7 +18,6 @@ public struct SpawnZone
         this.rightB = rightB;
         this.topB = topB;
         this.bottomB = bottomB;
-
     }
 }
 
