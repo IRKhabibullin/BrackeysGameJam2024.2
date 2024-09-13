@@ -21,13 +21,20 @@ public class MovementController : MonoBehaviour
     private bool _canMove = true;
     private bool _isMoving;
 
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
+            _animator.SetTrigger("isFloating");
             OnWaterTouched?.Invoke();
-            transform.position = new Vector3(0, 1.2f, 26);
+            yield return new WaitForSeconds(3.15f);
+            ResetPosition();
         }
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = new Vector3(0, 1.2f, 26);
     }
 
     public void SetMoveSpeed(float percent)
@@ -53,6 +60,7 @@ public class MovementController : MonoBehaviour
         _playerControls = new PlayerInputActions();
 
         currentMoveSpeed = baseMoveSpeed;
+        SetMoveSpeed(0);
     }
     
     private void OnEnable()

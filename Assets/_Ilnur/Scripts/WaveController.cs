@@ -15,8 +15,6 @@ public class WaveController : MonoBehaviour
     void Start()
     {
         GenerateWaterLevels();
-        _rippleCoroutine = RippleCoroutine();
-        StartCoroutine(_rippleCoroutine);
     }
 
     private void GenerateWaterLevels()
@@ -37,11 +35,11 @@ public class WaveController : MonoBehaviour
     {
         foreach (var waveData in waveValues.waves)
         {
-            yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.lowTideLayer).highTideY, waveData.lowTideTime);
-            yield return new WaitForSeconds(waveData.highTideTimeout);
-            yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.highTideLayer).highTideY, waveData.highTideTime);
+            yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.lowTideLayer).highTideY, waveData.lowTideMoveTime);
+            yield return new WaitForSeconds(waveData.lowTideDuration);
+            yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.highTideLayer).highTideY, waveData.highTideMoveTime);
             OnWaveUp?.Invoke(this, waveData);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(waveData.highTideDuration);
         }
     }
 
@@ -56,20 +54,28 @@ public class WaveController : MonoBehaviour
         }
     }
 
-    private void ResetWaves()
+    public void StopWaves()
     {
-        StopCoroutine(_rippleCoroutine);
+        transform.position = new Vector3(0, -0.6f, 0);
+        if (_rippleCoroutine != null)
+            StopCoroutine(_rippleCoroutine);
+    }
+
+    public void StartWaves()
+    {
+        if (_rippleCoroutine != null)
+            StopCoroutine(_rippleCoroutine);
         _rippleCoroutine = RippleCoroutine();
         StartCoroutine(_rippleCoroutine);
     }
     
     private void OnEnable()
     {
-        MovementController.OnWaterTouched += ResetWaves;
+        MovementController.OnWaterTouched += StopWaves;
     }
 
     private void OnDisable()
     {
-        MovementController.OnWaterTouched -= ResetWaves;
+        MovementController.OnWaterTouched -= StopWaves;
     }
 }

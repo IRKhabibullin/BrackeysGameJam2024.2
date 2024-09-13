@@ -13,33 +13,57 @@ MonoBehaviour:
   m_Name: WaveValues
   m_EditorClassIdentifier: 
   waves:
-  - highTideLayer: 1
+  - lowTideDuration: 0
     lowTideLayer: -1
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 0
+    highTideMoveTime: 2.5
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    highTideLevel: 161.38307
-    lowTideLevel: 0
-  - highTideLayer: 2
+  - lowTideDuration: 0
     lowTideLayer: -2
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
+    lowTideMoveTime: 0
+    highTideDuration: 0.5
+    highTideLayer: 1
+    highTideMoveTime: 2.5
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    highTideLevel: 322.76614
-    lowTideLevel: 161.38307
-  - highTideLayer: 3
+  - lowTideDuration: 0
     lowTideLayer: -4
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 1
+    lowTideMoveTime: 0
+    highTideDuration: 0.5
+    highTideLayer: 1
+    highTideMoveTime: 2.5
     usefulItemsSpawnRate: 0
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    highTideLevel: 484.14923
-    lowTideLevel: 322.76614
+  - lowTideDuration: 0
+    lowTideLayer: -4
+    lowTideMoveTime: 0
+    highTideDuration: 0.5
+    highTideLayer: 2
+    highTideMoveTime: 2.5
+    usefulItemsSpawnRate: 0
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0
+  - lowTideDuration: 2
+    lowTideLayer: -1
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 3
+    highTideMoveTime: 2.5
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0
+  - lowTideDuration: 2
+    lowTideLayer: 0
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 3
+    highTideMoveTime: 2.5
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 0
+    obstaclesSpawnRate: 0

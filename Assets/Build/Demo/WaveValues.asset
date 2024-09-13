@@ -13,51 +13,57 @@ MonoBehaviour:
   m_Name: WaveValues
   m_EditorClassIdentifier: 
   waves:
-  - highTideLayer: 0
+  - lowTideDuration: 2
     lowTideLayer: -1
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 0.5
-    usefulItemsSpawnRate: 6
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 0
+    highTideMoveTime: 2.5
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 1
+  - lowTideDuration: 2
     lowTideLayer: -1
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 0.5
-    usefulItemsSpawnRate: 6
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 1
+    highTideMoveTime: 2.5
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 1
-    lowTideLayer: -2
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 0.5
-    usefulItemsSpawnRate: 6
+  - lowTideDuration: 2
+    lowTideLayer: -1
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 1
+    highTideMoveTime: 2.5
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 2
-    lowTideLayer: -2
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 0.5
+  - lowTideDuration: 2
+    lowTideLayer: -1
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 2
+    highTideMoveTime: 2.5
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 3
-    lowTideLayer: -1
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 0.5
+  - lowTideDuration: 2
+    lowTideLayer: -2
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 3
+    highTideMoveTime: 2.5
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - highTideLayer: 3
-    lowTideLayer: 0
-    highTideTime: 2.5
-    lowTideTime: 2.5
-    highTideTimeout: 0.5
+  - lowTideDuration: 2
+    lowTideLayer: -2
+    lowTideMoveTime: 0
+    highTideDuration: 0.5
+    highTideLayer: 3
+    highTideMoveTime: 2.5
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
