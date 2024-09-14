@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectableItemSO: {fileID: 11400000, guid: 21e05d6d3edb2794486ee5ecf67086ed, type: 2}
+  isCollectable: 1
 --- !u!65 &7354694353484529699
 BoxCollider:
   m_ObjectHideFlags: 0

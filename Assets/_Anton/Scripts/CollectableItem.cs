@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollectableItem : MonoBehaviour
 {
     [SerializeField] CollectableItemSO collectableItemSO;
+    [SerializeField] bool isCollectable;
     public static event EventHandler <CollectableItemSO> OnAnyCollectableItemPicked;
     private String playerLayerMaskString = "Player"; //hardcoded for speed
 
@@ -18,7 +19,7 @@ public class CollectableItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer(playerLayerMaskString))
+        if (other.gameObject.layer == LayerMask.NameToLayer(playerLayerMaskString) & isCollectable == true)
         {
             PickItem();
         }

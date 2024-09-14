@@ -77,9 +77,19 @@ MonoBehaviour:
   garbageList:
   - {fileID: 7049332572318753601, guid: 6cb40e3adbccc114abfa739eaba08df8, type: 3}
   - {fileID: 7049332572318753601, guid: 695cbda867d30c047818eba1dfb2c837, type: 3}
+  obstaclesList:
+  - {fileID: 8121703563577203773, guid: 482b82229dadaf74ab071d59210db8cf, type: 3}
+  - {fileID: -2551804000162249529, guid: faf5d67a2d73a3648b6fe55b514a81a6, type: 3}
+  - {fileID: 6081647296006601421, guid: 4c9a48904c237114387db0af14f8f25e, type: 3}
+  - {fileID: -1556167341034172773, guid: f4d0f4ee9fe125542a1f4893b532645f, type: 3}
+  - {fileID: 4326295612355084131, guid: a7bff6d0bc201b54f96ccd446bae938f, type: 3}
+  - {fileID: -199197013718034328, guid: 8ca523fcf2316224e8e87fb04dd07d4c, type: 3}
   waveValues_SO: {fileID: 11400000, guid: e5e18a5302a04b64295eac7dbf519474, type: 2}
   waterLevels_SO: {fileID: 11400000, guid: f1478edda29481a479c7916d0c51bd10, type: 2}
+  movementController: {fileID: 0}
   coastPlane: {fileID: 0}
   maxZoneCount: 7
   maxGarbageCount: 5
+  maxObstaclesCount: 5
   startingGarbageZone: 3
+  startingObstaclesZone: 4
