@@ -110,4 +110,6 @@ public class MovementController : MonoBehaviour
         _rb.rotation = Quaternion.RotateTowards(_rb.rotation, toRotation, rotationSpeed * Time.fixedDeltaTime);
         return true;
     }
+
+    public Animator GetAnimator() { return _animator; }
 }

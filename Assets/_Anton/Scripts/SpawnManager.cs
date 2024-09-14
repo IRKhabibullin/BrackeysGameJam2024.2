@@ -12,21 +12,26 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private List<CollectableItem> collectableItemList;
     [SerializeField] private List<CollectableItemSO> collectableItemSOList;
     [SerializeField] private List<CollectableItem> garbageList;
+    [SerializeField] private List<CollectableItem> obstaclesList;
     [SerializeField] private WaveValues_SO waveValues_SO;
     [SerializeField] private WaterLevels_SO waterLevels_SO;
+    [SerializeField] private MovementController movementController;
 
     [SerializeField] private Transform coastPlane;
     [SerializeField] private int maxZoneCount;
     [SerializeField] private int maxGarbageCount; // maximum of garbage on the ground
+    [SerializeField] private int maxObstaclesCount; // maximum of obstacles on the ground
     [SerializeField] private int startingGarbageZone; //in zones with lower index garbage will not spawn
+    [SerializeField] private int startingObstaclesZone; //in zones with lower index will not spawn
 
     [SerializeField] private Dictionary<int, List<CollectableItemSO>> zonesAndItemsDict = new Dictionary<int, List<CollectableItemSO>>();
 
-    private MeshRenderer planeRenderer;
+    //private MeshRenderer planeRenderer;
     private int currentWaveZoneCount;
     private List<SpawnZone> currentWaveZoneList;
     private List<GameObject> objectsForRemoval;
     private int garbageCount = 0;
+    private int obstaclesCount = 0;
 
     private enum TypeOfObject
     {
@@ -51,7 +56,7 @@ public class SpawnManager : MonoBehaviour
     {
         currentWaveZoneList = new List<SpawnZone>();
         objectsForRemoval = new List<GameObject>();
-        planeRenderer = coastPlane.GetComponent<MeshRenderer>();
+        //planeRenderer = coastPlane.GetComponent<MeshRenderer>();
         FillZonesAndItemsDict(collectableItemSOList);
     }
 
@@ -60,11 +65,12 @@ public class SpawnManager : MonoBehaviour
     {
         int collectablesSpawnRate = waveData.usefulItemsSpawnRate;
         int garbageSpawnRate = waveData.uselessItemsSpawnRate;
+        int obstaclesSpawnRate = waveData.obstaclesSpawnRate;
         int currentZoneCount = CalculateCurrentWaveZoneCount((int)waveData.highTideLayer, (int)waveData.lowTideLayer);
 
-        CreateZones(coastPlane, currentZoneCount, waveData);
+        CreateZones(currentZoneCount, waveData);
 
-        //spawning usefull items
+        //spawning USEFUL items
         for (int m = 0; m < currentZoneCount; m++) //going through zones to spawn items
         {
             for (int i = 0; i < collectablesSpawnRate; i++) // spawning item in each zone
@@ -73,7 +79,7 @@ public class SpawnManager : MonoBehaviour
             }
         }
 
-        //spawning useless items if the limit was not achieved
+        //spawning USELESS items if the limit was not achieved
         if (garbageCount < maxGarbageCount)
         {
             if (currentZoneCount >= startingGarbageZone)
@@ -90,11 +96,30 @@ public class SpawnManager : MonoBehaviour
                 }
             }
         }
+
+        //spawning OBSTACLES if the limit was not achieved
+        if (obstaclesCount < maxObstaclesCount)
+        {
+            if (currentZoneCount >= startingObstaclesZone)
+            {
+                int zoneIndexForObstacles = Random.Range(startingObstaclesZone - 1, currentZoneCount); //minus 1 because list of zones starts from 0
+
+                for (int i = 0; i < obstaclesSpawnRate; i++)
+                {
+                    if (obstaclesCount < maxObstaclesCount)
+                    {
+                        SpawnItem(currentWaveZoneList[zoneIndexForObstacles], TypeOfObject.Obstacle);
+                        obstaclesCount++;
+                    }
+                }
+            }
+        }
     }
 
     private void SpawnItem(SpawnZone zone, TypeOfObject typeOfObject)
     {
         List<CollectableItem> validObjectSpawnList = new List<CollectableItem>();
+        bool isObstacle = false;
 
         switch (typeOfObject)
         {
@@ -107,13 +132,20 @@ public class SpawnManager : MonoBehaviour
                 break;
 
             case TypeOfObject.Obstacle:
-                validObjectSpawnList = null;
+                validObjectSpawnList = obstaclesList;
+                isObstacle = true;
                 break;
         }
+
         Quaternion randomRotationY = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
         Vector3 worldSpawnPosition = (ChooseRandomPositionWithinZone(zone));
         GameObject spawnedObject = Instantiate(ChooseRandomObjectToSpawn(validObjectSpawnList), worldSpawnPosition, randomRotationY);
         objectsForRemoval.Add(spawnedObject);
+
+        if (isObstacle == true)
+        {
+            spawnedObject.GetComponent<ObstacleSlow>().SetPlayer(movementController);
+        }
         //spawnedObject.transform.up = coastPlane.transform.up;
     }
 
@@ -183,7 +215,7 @@ public class SpawnManager : MonoBehaviour
         return yValue;
     }
 
-    public void CreateZones(Transform spawnPlane, int zoneCount, WaveData waveData)
+    public void CreateZones(int zoneCount, WaveData waveData)
     {
         currentWaveZoneList.Clear();
         float diffBetweenZones = (FindZoneZCoordinates(waveData)[0] - FindZoneZCoordinates(waveData)[1]) / zoneCount;
@@ -237,8 +269,8 @@ public class SpawnManager : MonoBehaviour
 
                 //float leftBoundary = planeRenderer.bounds.min.x + itemSizeOffset + diffBetweenZones * 2;
                 //float rightBoundary = planeRenderer.bounds.max.x - itemSizeOffset - diffBetweenZones * 2;
-                float leftBoundary = -26f; //plane is larger now, hardcoded values as a simpliest decision
-                float rightBoundary = 27f; //plane is larger now, hardcoded values of simpliest decision
+                float leftBoundary = -25f; //plane is larger now, hardcoded values as a simpliest decision
+                float rightBoundary = 26f; //plane is larger now, hardcoded values of simpliest decision
 
                 if (topZBoundary == 99 || bottomZBoundary == 99)
                 {
@@ -316,14 +348,14 @@ public class SpawnManager : MonoBehaviour
     {
         //this is done in an ugly-hardcody style
 
-        zonesAndItemsDict.Add(0, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });
-        zonesAndItemsDict.Add(1, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });
-        zonesAndItemsDict.Add(2, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2] });
-        zonesAndItemsDict.Add(3, new List<CollectableItemSO> { listOfItemsSO[2], listOfItemsSO[3] });
-        zonesAndItemsDict.Add(4, new List<CollectableItemSO> { listOfItemsSO[3], listOfItemsSO[4] });
-        zonesAndItemsDict.Add(5, new List<CollectableItemSO> { listOfItemsSO[4], listOfItemsSO[5] });
-        zonesAndItemsDict.Add(6, new List<CollectableItemSO> { listOfItemsSO[4], listOfItemsSO[5], listOfItemsSO[6] });
-        zonesAndItemsDict.Add(7, new List<CollectableItemSO> { listOfItemsSO[6] });
+        zonesAndItemsDict.Add(0, new List<CollectableItemSO> { listOfItemsSO[0]}); //coins 
+        zonesAndItemsDict.Add(1, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });// coins and pebbels
+        zonesAndItemsDict.Add(2, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2] }); // pebbels and crystals
+        zonesAndItemsDict.Add(3, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2], listOfItemsSO[3] }); //pebbels, crystals, starfish
+        zonesAndItemsDict.Add(4, new List<CollectableItemSO> { listOfItemsSO[2], listOfItemsSO[3] }); //crystals, starfish
+        zonesAndItemsDict.Add(5, new List<CollectableItemSO> { listOfItemsSO[3] }); //starfish
+        zonesAndItemsDict.Add(6, new List<CollectableItemSO> { listOfItemsSO[3], listOfItemsSO[4] }); //starfish, seashells
+        zonesAndItemsDict.Add(7, new List<CollectableItemSO> { listOfItemsSO[4] }); //seashells
     }
 
     private void ScoreManager_OnGameReset(object sender, System.EventArgs e)
