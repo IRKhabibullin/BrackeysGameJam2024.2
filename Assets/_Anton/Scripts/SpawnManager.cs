@@ -235,8 +235,10 @@ public class SpawnManager : MonoBehaviour
                     }
                 }
 
-                float leftBoundary = planeRenderer.bounds.min.x + itemSizeOffset + diffBetweenZones * 2;
-                float rightBoundary = planeRenderer.bounds.max.x - itemSizeOffset - diffBetweenZones * 2;
+                //float leftBoundary = planeRenderer.bounds.min.x + itemSizeOffset + diffBetweenZones * 2;
+                //float rightBoundary = planeRenderer.bounds.max.x - itemSizeOffset - diffBetweenZones * 2;
+                float leftBoundary = -26f; //plane is larger now, hardcoded values as a simpliest decision
+                float rightBoundary = 27f; //plane is larger now, hardcoded values of simpliest decision
 
                 if (topZBoundary == 99 || bottomZBoundary == 99)
                 {
