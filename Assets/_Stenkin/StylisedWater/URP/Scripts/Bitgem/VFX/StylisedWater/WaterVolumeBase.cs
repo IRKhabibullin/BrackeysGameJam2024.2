@@ -15,9 +15,9 @@ namespace Bitgem.VFX.StylisedWater
     {
         #region Constants
 
-        public const int MAX_TILES_X = 100;
-        public const int MAX_TILES_Y = 50;
-        public const int MAX_TILES_Z = 100;
+        public const int MAX_TILES_X = 50;
+        public const int MAX_TILES_Y = 25;
+        public const int MAX_TILES_Z = 50;
 
         #endregion
 
@@ -123,7 +123,7 @@ namespace Bitgem.VFX.StylisedWater
 
         public void Rebuild()
         {
-            Debug.Log("rebuilding water volume \"" + gameObject.name + "\"");
+            // Debug.Log("rebuilding water volume \"" + gameObject.name + "\"");
 
             // ensure references to components before trying to use them
             ensureReferences();

@@ -60,7 +60,6 @@ public class MovementController : MonoBehaviour
         _playerControls = new PlayerInputActions();
 
         currentMoveSpeed = baseMoveSpeed;
-        SetMoveSpeed(0);
     }
     
     private void OnEnable()

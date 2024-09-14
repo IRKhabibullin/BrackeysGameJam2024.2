@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -22,7 +20,7 @@ public class ScoreManagerVisual : MonoBehaviour
 
     private void OnDisable()
     {
-        ScoreManager.OnGameReset -= ScoreManager_OnGameReset;
+        ScoreManager.OnScoreChanged -= ScoreManager_OnScoreChanged;
         ScoreManager.OnGameReset -= ScoreManager_OnGameReset;
     }
 
@@ -33,6 +31,7 @@ public class ScoreManagerVisual : MonoBehaviour
 
     private void ScoreManager_OnGameReset(object sender, System.EventArgs e)
     {
+        UpdateScore();
         UpdateBestScore();
     }
 
@@ -43,6 +42,7 @@ public class ScoreManagerVisual : MonoBehaviour
 
     private void UpdateBestScore()
     {
-        bestScoreText.text = ScoreManager.GetBestScore().ToString();
+        if (bestScoreText)
+            bestScoreText.text = ScoreManager.GetBestScore().ToString();
     }
 }

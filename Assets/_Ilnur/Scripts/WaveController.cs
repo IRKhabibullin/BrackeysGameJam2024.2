@@ -12,9 +12,10 @@ public class WaveController : MonoBehaviour
 
     public static event EventHandler <WaveData> OnWaveUp;
 
-    void Start()
+    void Awake()
     {
         GenerateWaterLevels();
+        StartWaves();
     }
 
     private void GenerateWaterLevels()

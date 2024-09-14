@@ -15,55 +15,133 @@ MonoBehaviour:
   waves:
   - lowTideDuration: 2
     lowTideLayer: -1
+    lowTideMoveTime: 3
+    highTideDuration: 0.5
+    highTideLayer: 0
+    highTideMoveTime: 2
+    usefulItemsSpawnRate: 6
+    uselessItemsSpawnRate: 1
+    obstaclesSpawnRate: 0
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 2
+    lowTideLayer: -1
+    lowTideMoveTime: 3
+    highTideDuration: 0.5
+    highTideLayer: 0
+    highTideMoveTime: 2
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 1
+    obstaclesSpawnRate: 1
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 2
+    lowTideLayer: -2
     lowTideMoveTime: 2.5
     highTideDuration: 0.5
     highTideLayer: 0
-    highTideMoveTime: 2.5
-    usefulItemsSpawnRate: 2
-    uselessItemsSpawnRate: 0
+    highTideMoveTime: 2
+    usefulItemsSpawnRate: 4
+    uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
+    waveSound: {fileID: 0}
+    weather: 2
   - lowTideDuration: 2
-    lowTideLayer: -1
+    lowTideLayer: -2
+    lowTideMoveTime: 2.5
+    highTideDuration: 0.5
+    highTideLayer: 0
+    highTideMoveTime: 2
+    usefulItemsSpawnRate: 4
+    uselessItemsSpawnRate: 2
+    obstaclesSpawnRate: 0
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 2
+    lowTideLayer: -2
     lowTideMoveTime: 2.5
     highTideDuration: 0.5
     highTideLayer: 1
     highTideMoveTime: 2.5
-    usefulItemsSpawnRate: 2
-    uselessItemsSpawnRate: 0
+    usefulItemsSpawnRate: 4
+    uselessItemsSpawnRate: 2
     obstaclesSpawnRate: 0
-  - lowTideDuration: 2
-    lowTideLayer: -1
-    lowTideMoveTime: 2.5
-    highTideDuration: 0.5
-    highTideLayer: 1
-    highTideMoveTime: 2.5
-    usefulItemsSpawnRate: 2
-    uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - lowTideDuration: 2
-    lowTideLayer: -1
+    waveSound: {fileID: 0}
+    weather: 1
+  - lowTideDuration: 3
+    lowTideLayer: -2
     lowTideMoveTime: 2.5
     highTideDuration: 0.5
     highTideLayer: 2
-    highTideMoveTime: 2.5
-    usefulItemsSpawnRate: 3
+    highTideMoveTime: 3.5
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 0
-    obstaclesSpawnRate: 0
-  - lowTideDuration: 2
+    obstaclesSpawnRate: 1
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 3
     lowTideLayer: -2
     lowTideMoveTime: 2.5
     highTideDuration: 0.5
-    highTideLayer: 3
-    highTideMoveTime: 2.5
+    highTideLayer: 2
+    highTideMoveTime: 3.5
+    usefulItemsSpawnRate: 4
+    uselessItemsSpawnRate: 2
+    obstaclesSpawnRate: 0
+    waveSound: {fileID: 0}
+    weather: 3
+  - lowTideDuration: 3
+    lowTideLayer: -3
+    lowTideMoveTime: 4
+    highTideDuration: 0.5
+    highTideLayer: 2
+    highTideMoveTime: 4
     usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 1
+    obstaclesSpawnRate: 0
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 3
+    lowTideLayer: -3
+    lowTideMoveTime: 4.5
+    highTideDuration: 0.5
+    highTideLayer: 2
+    highTideMoveTime: 4.5
+    usefulItemsSpawnRate: 4
+    uselessItemsSpawnRate: 2
+    obstaclesSpawnRate: 1
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 5
+    lowTideLayer: -4
+    lowTideMoveTime: 4.5
+    highTideDuration: 0.5
+    highTideLayer: 2
+    highTideMoveTime: 4.5
+    usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-  - lowTideDuration: 2
-    lowTideLayer: -2
-    lowTideMoveTime: 0
+    waveSound: {fileID: 0}
+    weather: 4
+  - lowTideDuration: 4
+    lowTideLayer: -4
+    lowTideMoveTime: 4.5
+    highTideDuration: 0.5
+    highTideLayer: 2
+    highTideMoveTime: 4.5
+    usefulItemsSpawnRate: 4
+    uselessItemsSpawnRate: 2
+    obstaclesSpawnRate: 1
+    waveSound: {fileID: 0}
+    weather: 0
+  - lowTideDuration: 4
+    lowTideLayer: -4
+    lowTideMoveTime: 4.5
     highTideDuration: 0.5
     highTideLayer: 3
-    highTideMoveTime: 2.5
+    highTideMoveTime: 3
     usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 0
+    uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
+    waveSound: {fileID: 0}
+    weather: 0
