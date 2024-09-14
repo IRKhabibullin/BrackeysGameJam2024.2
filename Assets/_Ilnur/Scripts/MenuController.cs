@@ -1,12 +1,15 @@
-using System;
 using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private MovementController character;
     [SerializeField] private WaveController waveController;
+    [SerializeField] private AudioSource musicController;
     [SerializeField] private GameObject menuUI;
     [SerializeField] private GameObject gameUI;
+
+    [SerializeField] private AudioClip menuSoundtrack;
+    [SerializeField] private AudioClip gameSoundtrack;
     
     public void StartGame()
     {
@@ -17,6 +20,9 @@ public class MenuController : MonoBehaviour
 
         menuUI.SetActive(false);
         gameUI.SetActive(true);
+
+        musicController.clip = gameSoundtrack;
+        musicController.Play();
     }
 
     private void GameOver()
@@ -24,12 +30,18 @@ public class MenuController : MonoBehaviour
         menuUI.SetActive(true);
         gameUI.SetActive(false);
         character.SetMoveSpeed(0);
+
+        musicController.clip = menuSoundtrack;
+        musicController.Play();
     }
 
     private void Start()
     {
         character.SetMoveSpeed(0);
         waveController.StopWaves();
+
+        musicController.clip = menuSoundtrack;
+        musicController.Play();
     }
 
     private void OnEnable()

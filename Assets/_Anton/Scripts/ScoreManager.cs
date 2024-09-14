@@ -1,14 +1,15 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
     [SerializeField] private static int currentScore;
+    [SerializeField] private AudioClip goodItemPickUpSound;
+    [SerializeField] private AudioClip badItemPickUpSound;
+    [SerializeField] private AudioSource audioSource;
     public static event EventHandler OnScoreChanged;
     public static event EventHandler OnGameReset;
     private static List<int> scoreList = new List<int>() {0};
@@ -41,6 +42,19 @@ public class ScoreManager : MonoBehaviour
     private void CollectableItem_OnAnyCollectableItemPicked(object sender, CollectableItemSO e)
     {
         currentScore += e.pointsValue;
+        if (e.collectionType == CollectableItemSO.CollectionType.Garbage)
+        {
+            audioSource.clip = badItemPickUpSound;
+            audioSource.Play();
+        }
+        else
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = goodItemPickUpSound;
+                audioSource.Play();
+            }
+        }
         OnScoreChanged?.Invoke(this, EventArgs.Empty);
     }
 

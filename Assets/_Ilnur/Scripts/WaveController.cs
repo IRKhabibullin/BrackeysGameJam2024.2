@@ -9,6 +9,7 @@ public class WaveController : MonoBehaviour
     private IEnumerator _rippleCoroutine;
     [SerializeField] private MeshRenderer waterMesh;
     [SerializeField] private LayerMask beachLayer;
+    [SerializeField] private AudioSource wavesAudioSource;
 
     public static event EventHandler <WaveData> OnWaveUp;
 
@@ -36,6 +37,8 @@ public class WaveController : MonoBehaviour
     {
         foreach (var waveData in waveValues.waves)
         {
+            wavesAudioSource.clip = waveData.waveSound;
+            wavesAudioSource.volume = 0;
             yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.lowTideLayer).highTideY, waveData.lowTideMoveTime);
             yield return new WaitForSeconds(waveData.lowTideDuration);
             yield return MoveWaveCoroutine(waterLevels.GetWaterLavel(waveData.highTideLayer).highTideY, waveData.highTideMoveTime);
@@ -46,13 +49,44 @@ public class WaveController : MonoBehaviour
 
     private IEnumerator MoveWaveCoroutine(float newWaveHeight, float waveMoveTime)
     {
+        wavesAudioSource.Play();
         var currentPosition = transform.position;
         for(var f = 0f; f <= waveMoveTime; f += Time.deltaTime) {
             var t = f / waveMoveTime;
             t = t * t * t * (t * (6.0f * t - 15.0f) + 10.0f);
             transform.position = new Vector3(0, Mathf.Lerp(currentPosition.y, newWaveHeight, t), 0);
+
+            if (t < 0.2f)
+            {
+                wavesAudioSource.volume = t;
+            }
+            else if (t > 0.8f)
+            {
+                wavesAudioSource.volume = 1 - t;
+            }
+            
             yield return null;
         }
+        wavesAudioSource.Stop();
+    }
+
+    private IEnumerator PlayWaveSoundCoroutine(WaveData wave)
+    {
+        wavesAudioSource.Play();
+        var volumeChangeTime = wave.lowTideMoveTime * 0.2f;
+        while (wavesAudioSource.volume < 1)
+        {
+            wavesAudioSource.volume += Time.deltaTime / volumeChangeTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(wave.lowTideMoveTime * 0.6f);
+        while (wavesAudioSource.volume > 0)
+        {
+            wavesAudioSource.volume -= Time.deltaTime / volumeChangeTime;
+            yield return null;
+        }
+        wavesAudioSource.Stop();
     }
 
     public void StopWaves()

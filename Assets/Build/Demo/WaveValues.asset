@@ -30,7 +30,7 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 0
     highTideMoveTime: 2
-    usefulItemsSpawnRate: 3
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 1
     waveSound: {fileID: 8300000, guid: d6bb440f2aa52714d8cc590099b80b8f, type: 3}
@@ -41,7 +41,7 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 0
     highTideMoveTime: 2
-    usefulItemsSpawnRate: 4
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
     waveSound: {fileID: 8300000, guid: 4208ab4966f4b0143ab1acfc0b436086, type: 3}
@@ -52,8 +52,8 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 0
     highTideMoveTime: 2
-    usefulItemsSpawnRate: 4
-    uselessItemsSpawnRate: 2
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
     waveSound: {fileID: 8300000, guid: 4208ab4966f4b0143ab1acfc0b436086, type: 3}
     weather: 0
@@ -63,8 +63,8 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 1
     highTideMoveTime: 2.5
-    usefulItemsSpawnRate: 4
-    uselessItemsSpawnRate: 2
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
     waveSound: {fileID: 8300000, guid: 3ed0a3b8717accf40bda5d70ceac6885, type: 3}
     weather: 1
@@ -85,8 +85,8 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 2
     highTideMoveTime: 3.5
-    usefulItemsSpawnRate: 4
-    uselessItemsSpawnRate: 2
+    usefulItemsSpawnRate: 2
+    uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
     waveSound: {fileID: 8300000, guid: 60fdd45ca5d28e54bac9de56d4612a50, type: 3}
     weather: 3
@@ -107,8 +107,8 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 2
     highTideMoveTime: 4.5
-    usefulItemsSpawnRate: 4
-    uselessItemsSpawnRate: 2
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 1
     waveSound: {fileID: 8300000, guid: 60fdd45ca5d28e54bac9de56d4612a50, type: 3}
     weather: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 2
     highTideMoveTime: 4.5
-    usefulItemsSpawnRate: 4
+    usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
     waveSound: {fileID: 8300000, guid: 5bf9801f4eeccaa47ba5bf89886efe21, type: 3}
@@ -129,8 +129,8 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 2
     highTideMoveTime: 4.5
-    usefulItemsSpawnRate: 4
-    uselessItemsSpawnRate: 2
+    usefulItemsSpawnRate: 3
+    uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 1
     waveSound: {fileID: 8300000, guid: 5bf9801f4eeccaa47ba5bf89886efe21, type: 3}
     weather: 0
@@ -140,8 +140,8 @@ MonoBehaviour:
     highTideDuration: 0.5
     highTideLayer: 3
     highTideMoveTime: 3
-    usefulItemsSpawnRate: 3
-    uselessItemsSpawnRate: 1
+    usefulItemsSpawnRate: 0
+    uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
     waveSound: {fileID: 8300000, guid: 5bf9801f4eeccaa47ba5bf89886efe21, type: 3}
     weather: 0

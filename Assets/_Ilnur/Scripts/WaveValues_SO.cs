@@ -28,4 +28,9 @@ public class WaveData
     [Tooltip("Количество полезных предметов")] public int usefulItemsSpawnRate;
     [Tooltip("Количество негативных предметов")] public int uselessItemsSpawnRate;
     [Tooltip("Количество препятствий")] public int obstaclesSpawnRate;
+    
+    [Header("Effects")]
+    [Tooltip("Звук волны")] public AudioClip waveSound;
+    [Tooltip("Погода, начинающаяся с этой волной")] public WeatherEffect weather;
+    // [Tooltip("Музыка, начинающаяся с этой волной")] public MusicEffects Music;
 }
