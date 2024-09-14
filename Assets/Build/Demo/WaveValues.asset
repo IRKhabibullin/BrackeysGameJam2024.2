@@ -22,7 +22,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 6
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: d6bb440f2aa52714d8cc590099b80b8f, type: 3}
     weather: 0
   - lowTideDuration: 2
     lowTideLayer: -1
@@ -33,7 +33,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 1
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: d6bb440f2aa52714d8cc590099b80b8f, type: 3}
     weather: 0
   - lowTideDuration: 2
     lowTideLayer: -2
@@ -44,7 +44,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 4208ab4966f4b0143ab1acfc0b436086, type: 3}
     weather: 2
   - lowTideDuration: 2
     lowTideLayer: -2
@@ -55,7 +55,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 2
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 4208ab4966f4b0143ab1acfc0b436086, type: 3}
     weather: 0
   - lowTideDuration: 2
     lowTideLayer: -2
@@ -66,7 +66,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 2
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 3ed0a3b8717accf40bda5d70ceac6885, type: 3}
     weather: 1
   - lowTideDuration: 3
     lowTideLayer: -2
@@ -77,7 +77,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 2
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 1
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 3ed0a3b8717accf40bda5d70ceac6885, type: 3}
     weather: 0
   - lowTideDuration: 3
     lowTideLayer: -2
@@ -88,7 +88,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 2
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 60fdd45ca5d28e54bac9de56d4612a50, type: 3}
     weather: 3
   - lowTideDuration: 3
     lowTideLayer: -3
@@ -99,7 +99,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 60fdd45ca5d28e54bac9de56d4612a50, type: 3}
     weather: 0
   - lowTideDuration: 3
     lowTideLayer: -3
@@ -110,7 +110,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 2
     obstaclesSpawnRate: 1
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 60fdd45ca5d28e54bac9de56d4612a50, type: 3}
     weather: 0
   - lowTideDuration: 5
     lowTideLayer: -4
@@ -121,7 +121,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 0
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 5bf9801f4eeccaa47ba5bf89886efe21, type: 3}
     weather: 4
   - lowTideDuration: 4
     lowTideLayer: -4
@@ -132,7 +132,7 @@ MonoBehaviour:
     usefulItemsSpawnRate: 4
     uselessItemsSpawnRate: 2
     obstaclesSpawnRate: 1
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 5bf9801f4eeccaa47ba5bf89886efe21, type: 3}
     weather: 0
   - lowTideDuration: 4
     lowTideLayer: -4
@@ -143,5 +143,5 @@ MonoBehaviour:
     usefulItemsSpawnRate: 3
     uselessItemsSpawnRate: 1
     obstaclesSpawnRate: 0
-    waveSound: {fileID: 0}
+    waveSound: {fileID: 8300000, guid: 5bf9801f4eeccaa47ba5bf89886efe21, type: 3}
     weather: 0
