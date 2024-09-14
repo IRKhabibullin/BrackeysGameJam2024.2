@@ -61,16 +61,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287023475526176018}
-  m_LocalRotation: {x: -0, y: -0, z: 0.028547976, w: -0.9995924}
+  m_LocalRotation: {x: -0, y: -0, z: 0.022130242, w: -0.9997551}
   m_LocalPosition: {x: 0, y: 0, z: 2.6678926e-12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7515966589963768868}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.536}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.624298}
+  m_AnchoredPosition: {x: 0.000061035156, y: -5.6243095}
   m_SizeDelta: {x: -39.4328, y: -62.1246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &682903882313867862
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sound design
+  m_text: Game and sound design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f9efc885256ca4eae36c5d1c8fb6bc, type: 2}
   m_sharedMaterial: {fileID: 5882890531574712469, guid: f1f9efc885256ca4eae36c5d1c8fb6bc,
@@ -129,11 +129,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.35
+  m_fontSize: 32.45
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 35
+  m_fontSizeMin: 30
   m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Programming
+  m_text: 'GD and Programming
 
 '
   m_isRightToLeft: 0
@@ -381,11 +381,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.35
+  m_fontSize: 30.6
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 35
+  m_fontSizeMin: 30
   m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -709,16 +709,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447877047489199820}
-  m_LocalRotation: {x: -0, y: -0, z: 0.028547976, w: -0.9995924}
+  m_LocalRotation: {x: -0, y: -0, z: -0.06478177, w: 0.9978995}
   m_LocalPosition: {x: 0, y: 0, z: 2.6678926e-12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2538191646780410694}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.429}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5.6243}
+  m_AnchoredPosition: {x: 0.0000076293945, y: -5.624321}
   m_SizeDelta: {x: -17.0312, y: -60.1236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &961487779953935858
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: game and level design
+  m_text: Game and level design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1f9efc885256ca4eae36c5d1c8fb6bc, type: 2}
   m_sharedMaterial: {fileID: 5882890531574712469, guid: f1f9efc885256ca4eae36c5d1c8fb6bc,
@@ -1774,11 +1774,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.05
+  m_fontSize: 34.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 35
+  m_fontSizeMin: 30
   m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
