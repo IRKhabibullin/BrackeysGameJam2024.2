@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 2_Coins
   m_EditorClassIdentifier: 
   pointsValue: 20
-  collectionType: 1
+  collectionType: 2

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 7_Treasures
   m_EditorClassIdentifier: 
   pointsValue: 100
-  collectionType: 1
+  collectionType: 7

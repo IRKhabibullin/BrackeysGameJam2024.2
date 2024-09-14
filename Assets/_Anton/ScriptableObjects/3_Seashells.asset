@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 3_Seashells
   m_EditorClassIdentifier: 
   pointsValue: 30
-  collectionType: 1
+  collectionType: 3

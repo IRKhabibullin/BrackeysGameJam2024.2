@@ -20,6 +20,7 @@ public class CollectableItemSO : ScriptableObject
         Crystalls = 5,
         Pebbles = 6,
         Treasures = 7,
+        Garbage = 8,
     }
 
 }
