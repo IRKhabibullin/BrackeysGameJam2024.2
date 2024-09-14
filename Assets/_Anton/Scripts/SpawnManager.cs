@@ -348,14 +348,14 @@ public class SpawnManager : MonoBehaviour
     {
         //this is done in an ugly-hardcody style
 
-        zonesAndItemsDict.Add(0, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });
-        zonesAndItemsDict.Add(1, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });
-        zonesAndItemsDict.Add(2, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2] });
-        zonesAndItemsDict.Add(3, new List<CollectableItemSO> { listOfItemsSO[2], listOfItemsSO[3] });
-        zonesAndItemsDict.Add(4, new List<CollectableItemSO> { listOfItemsSO[3], listOfItemsSO[4] });
-        zonesAndItemsDict.Add(5, new List<CollectableItemSO> { listOfItemsSO[4], listOfItemsSO[5] });
-        zonesAndItemsDict.Add(6, new List<CollectableItemSO> { listOfItemsSO[4], listOfItemsSO[5], listOfItemsSO[6] });
-        zonesAndItemsDict.Add(7, new List<CollectableItemSO> { listOfItemsSO[6] });
+        zonesAndItemsDict.Add(0, new List<CollectableItemSO> { listOfItemsSO[0]}); //coins 
+        zonesAndItemsDict.Add(1, new List<CollectableItemSO> { listOfItemsSO[0], listOfItemsSO[1] });// coins and pebbels
+        zonesAndItemsDict.Add(2, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2] }); // pebbels and crystals
+        zonesAndItemsDict.Add(3, new List<CollectableItemSO> { listOfItemsSO[1], listOfItemsSO[2], listOfItemsSO[3] }); //pebbels, crystals, starfish
+        zonesAndItemsDict.Add(4, new List<CollectableItemSO> { listOfItemsSO[2], listOfItemsSO[3] }); //crystals, starfish
+        zonesAndItemsDict.Add(5, new List<CollectableItemSO> { listOfItemsSO[3] }); //starfish
+        zonesAndItemsDict.Add(6, new List<CollectableItemSO> { listOfItemsSO[3], listOfItemsSO[4] }); //starfish, seashells
+        zonesAndItemsDict.Add(7, new List<CollectableItemSO> { listOfItemsSO[4] }); //seashells
     }
 
     private void ScoreManager_OnGameReset(object sender, System.EventArgs e)

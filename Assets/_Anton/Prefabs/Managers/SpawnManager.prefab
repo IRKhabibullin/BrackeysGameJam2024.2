@@ -67,16 +67,16 @@ MonoBehaviour:
   - {fileID: 7049332572318753601, guid: 4f34f800164773846b2830c99ead7f18, type: 3}
   - {fileID: 7049332572318753601, guid: de2e3beae5b97c54ba79b1e1402ef3d4, type: 3}
   collectableItemSOList:
-  - {fileID: 11400000, guid: 35efd16d031fb3942b2e383b81505360, type: 2}
   - {fileID: 11400000, guid: b43b36f71bd179d40aaa4ed7a1922d4b, type: 2}
   - {fileID: 11400000, guid: 83f137a84c91a75459d421c801113439, type: 2}
   - {fileID: 11400000, guid: e26b3ee4092af5a408b2c6773539f5f1, type: 2}
   - {fileID: 11400000, guid: c3a11f8e1ea326f42b0d0afcda9ba93e, type: 2}
   - {fileID: 11400000, guid: 6850c6ce51cde8742b790f1d06243297, type: 2}
-  - {fileID: 11400000, guid: 2d312302c9cdcc14c83e88b5a3fffd04, type: 2}
   garbageList:
   - {fileID: 7049332572318753601, guid: 6cb40e3adbccc114abfa739eaba08df8, type: 3}
-  - {fileID: 7049332572318753601, guid: 695cbda867d30c047818eba1dfb2c837, type: 3}
+  - {fileID: 7049332572318753601, guid: 65c7be20139edcd4d97c90447e91eec5, type: 3}
+  - {fileID: 7049332572318753601, guid: a28e86210dba1494a8a7ac3bf57c670c, type: 3}
+  - {fileID: 7049332572318753601, guid: 4f34f800164773846b2830c99ead7f18, type: 3}
   obstaclesList:
   - {fileID: 8121703563577203773, guid: 482b82229dadaf74ab071d59210db8cf, type: 3}
   - {fileID: -2551804000162249529, guid: faf5d67a2d73a3648b6fe55b514a81a6, type: 3}

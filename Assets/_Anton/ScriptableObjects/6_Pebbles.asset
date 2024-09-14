@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2a4ce2583ddd9419a6ea7a1d100542, type: 3}
   m_Name: 6_Pebbles
   m_EditorClassIdentifier: 
-  pointsValue: 90
+  pointsValue: 60
   collectionType: 6
