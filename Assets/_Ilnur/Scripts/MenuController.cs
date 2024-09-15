@@ -1,29 +1,40 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private MovementController character;
     [SerializeField] private WaveController waveController;
-    [SerializeField] private AudioSource musicController;
-    [SerializeField] private GameObject menuUI;
+    [SerializeField] private MusicController musicController;
+    [SerializeField] private Image menuBackground;
+    [SerializeField] private CanvasGroup menuUI;
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject fadeScreen;
-
-    [SerializeField] private AudioClip menuSoundtrack;
-    [SerializeField] private AudioClip gameSoundtrack;
+    
+    [SerializeField] private Sprite winSprite;
+    [SerializeField] private Sprite loseSprite;
     
     public void StartGame()
     {
         character.ResetPosition();
         character.SetMoveSpeed(1);
         waveController.StartWaves();
-        menuUI.SetActive(false);
+        menuBackground.gameObject.SetActive(false);
+        menuUI.alpha = 0;
         gameUI.SetActive(true);
-        musicController.clip = gameSoundtrack;
-        musicController.Play();
-        // delete all items from spawner
+        musicController.PlayGameSoundtrack();
+        // todo delete all items from spawner
+    }
+
+    public IEnumerator FadeInMenuUICoroutine()
+    {
+        for (var t = 0f; t < 1; t += Time.deltaTime)
+        {
+            menuUI.alpha = t;
+            yield return null;
+        }
     }
 
     public void PlayButtonPressed()
@@ -33,15 +44,21 @@ public class MenuController : MonoBehaviour
 
     private void GameOver()
     {
+        menuBackground.sprite = loseSprite;
+        StartCoroutine(FadeCoroutine(ShowMenu));
+    }
+
+    private void Victory()
+    {
+        menuBackground.sprite = winSprite;
         StartCoroutine(FadeCoroutine(ShowMenu));
     }
 
     private void ShowMenu()
     {
-        menuUI.SetActive(true);
+        menuUI.alpha = 0;
+        menuBackground.gameObject.SetActive(true);
         gameUI.SetActive(false);
-        musicController.clip = menuSoundtrack;
-        musicController.Play();
     }
 
     private IEnumerator FadeCoroutine(Action callback)
@@ -58,17 +75,18 @@ public class MenuController : MonoBehaviour
         character.SetMoveSpeed(0);
         waveController.StopWaves();
 
-        musicController.clip = menuSoundtrack;
-        musicController.Play();
+        musicController.PlayMenuSoundtrack();
     }
 
     private void OnEnable()
     {
         MovementController.OnWaterTouched += GameOver;
+        WaveController.OnAllWavesEnded += Victory;
     }
 
     private void OnDisable()
     {
         MovementController.OnWaterTouched -= GameOver;
+        WaveController.OnAllWavesEnded -= Victory;
     }
 }

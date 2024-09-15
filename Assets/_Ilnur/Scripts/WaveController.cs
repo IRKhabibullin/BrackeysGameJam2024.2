@@ -12,6 +12,7 @@ public class WaveController : MonoBehaviour
     [SerializeField] private AudioSource wavesAudioSource;
 
     public static event EventHandler <WaveData> OnWaveUp;
+    public static Action OnAllWavesEnded;
 
     void Awake()
     {
@@ -45,6 +46,7 @@ public class WaveController : MonoBehaviour
             OnWaveUp?.Invoke(this, waveData);
             yield return new WaitForSeconds(waveData.highTideDuration);
         }
+        OnAllWavesEnded?.Invoke();
     }
 
     private IEnumerator MoveWaveCoroutine(float newWaveHeight, float waveMoveTime)
@@ -65,25 +67,6 @@ public class WaveController : MonoBehaviour
                 wavesAudioSource.volume = 1 - t;
             }
             
-            yield return null;
-        }
-        wavesAudioSource.Stop();
-    }
-
-    private IEnumerator PlayWaveSoundCoroutine(WaveData wave)
-    {
-        wavesAudioSource.Play();
-        var volumeChangeTime = wave.lowTideMoveTime * 0.2f;
-        while (wavesAudioSource.volume < 1)
-        {
-            wavesAudioSource.volume += Time.deltaTime / volumeChangeTime;
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(wave.lowTideMoveTime * 0.6f);
-        while (wavesAudioSource.volume > 0)
-        {
-            wavesAudioSource.volume -= Time.deltaTime / volumeChangeTime;
             yield return null;
         }
         wavesAudioSource.Stop();

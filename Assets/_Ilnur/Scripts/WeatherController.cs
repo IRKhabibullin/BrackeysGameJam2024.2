@@ -114,12 +114,14 @@ public class WeatherController : MonoBehaviour
     {
         WaveController.OnWaveUp += ChangeWeather;
         MovementController.OnWaterTouched += ResetWeather;
+        WaveController.OnAllWavesEnded += ResetWeather;
     }
 
     private void OnDisable()
     {
         WaveController.OnWaveUp -= ChangeWeather;
         MovementController.OnWaterTouched -= ResetWeather;
+        WaveController.OnAllWavesEnded -= ResetWeather;
     }
 }
 
