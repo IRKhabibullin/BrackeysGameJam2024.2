@@ -21,15 +21,18 @@ public class MovementController : MonoBehaviour
     private bool _canMove = true;
     private bool _isMoving;
 
-    private IEnumerator OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
+            SetMoveSpeed(0);
             _animator.SetTrigger("isFloating");
-            OnWaterTouched?.Invoke();
-            yield return new WaitForSeconds(3.15f);
-            ResetPosition();
         }
+    }
+
+    private void FinishGame()
+    {
+        OnWaterTouched?.Invoke();
     }
 
     public void ResetPosition()
