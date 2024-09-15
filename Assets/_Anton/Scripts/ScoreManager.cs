@@ -31,12 +31,14 @@ public class ScoreManager : MonoBehaviour
     {
         CollectableItem.OnAnyCollectableItemPicked += CollectableItem_OnAnyCollectableItemPicked;
         MovementController.OnWaterTouched += ResetScore;
+        WaveController.OnAllWavesEnded += ResetScore;
     }
 
     private void OnDisable()
     {
         CollectableItem.OnAnyCollectableItemPicked -= CollectableItem_OnAnyCollectableItemPicked;
         MovementController.OnWaterTouched -= ResetScore;
+        WaveController.OnAllWavesEnded -= ResetScore;
     }
 
     private void CollectableItem_OnAnyCollectableItemPicked(object sender, CollectableItemSO e)

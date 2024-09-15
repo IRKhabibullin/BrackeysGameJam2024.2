@@ -60,7 +60,6 @@ public class MusicController : MonoBehaviour
             yield return null;
         }
 
-        menuController.
         StartCoroutine(menuController.FadeInMenuUICoroutine());
         
         PlayMenuSoundtrack();

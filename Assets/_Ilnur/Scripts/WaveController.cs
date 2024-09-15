@@ -60,11 +60,11 @@ public class WaveController : MonoBehaviour
 
             if (t < 0.2f)
             {
-                wavesAudioSource.volume = t;
+                wavesAudioSource.volume = t / 0.2f;
             }
             else if (t > 0.8f)
             {
-                wavesAudioSource.volume = 1 - t;
+                wavesAudioSource.volume = (1 - t)  / 0.2f;
             }
             
             yield return null;
